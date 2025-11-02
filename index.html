@@ -1,0 +1,442 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Documentation | SimRel</title>
+	<link rel="preconnect stylesheet" href="project.css" />
+	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/marked-gfm-heading-id/lib/index.umd.js"></script>
+	<script src="project.js"></script>
+	<style>
+		/* <![CDATA[*/
+
+		img {
+			max-width: 100%;
+		}
+
+		th,
+		td {
+			border: 1px solid black;
+			padding: 0.2ex 1em;
+		}
+
+		th {
+			text-align: center;
+		}
+
+		td {
+			text-align: left;
+		}
+
+		tr:nth-child(2n) {
+			background-color: seashell;
+		}
+
+		table {
+			border: 1px solid black;
+			border-collapse: collapse;
+			margin-bottom: 2ex;
+		}
+
+		#table-of-contents {
+			padding: 0;
+			margin: 0;
+			margin-left: 0.5em;
+		}
+
+		.tl1 {
+			margin-left: 0em;
+			font-size: 90%;
+		}
+
+		.tl2 {
+			margin-left: 0.5em;
+			font-size: 85%;
+		}
+
+		.tl3 {
+			margin-left: 1.0em;
+			font-size: 80%;
+		}
+
+		.tl4 {
+			margin-left: 1.5em;
+			font-size: 75%;
+		}
+
+		.tl5 {
+			margin-left: 2.0em;
+			font-size: 75%;
+		}
+
+		.tl6 {
+			margin-left: 2.5em;
+			font-size: 75%;
+		}
+
+		#toc {
+			float: right;
+			position: sticky;
+			top: 0;
+			margin-top: 1.5em;
+		}
+
+		#toc .sideitem {
+			padding: 0.5em 0.5em;
+			margin-bottom: 0;
+		}
+
+		#toc h2 {
+			margin-bottom: 0.5em;
+			padding-bottom: 0.0em;
+		}
+
+		#toc #table-of-contents {
+			max-height: 66vh;
+			overflow-y: auto;
+		}
+
+		details>summary {
+			margin-bottom: 0.5em;
+		}
+
+		details>summary::before {
+			content: '▷️ ';
+			color: orange;
+		}
+
+		details[open]>summary::before {
+			content: '◢ ';
+			color: orange;
+		}
+
+		:target {
+			border-style: solid;
+			border-width: 1px;
+		}
+
+		#edit-markdown-link {
+			display: block;
+			margin-bottom: 1em;
+		}
+
+		/*]]>*/
+	</style>
+</head>
+
+<body>
+	<div data-generate="generateDefaultBreadcrumb(this)">
+		<a href=".">SimRel</a>
+	</div>
+
+	<div data-generate="generateDefaults(this)">
+	</div>
+
+	<main>
+		<div id="markdown-target"></div>
+	</main>
+
+	<script>
+		//<![CDATA[
+
+		function getFileParameter() {
+			const search = new URLSearchParams(window.location.search);
+			return search.get('file') ?? 'profile/README.md';
+		}
+
+		function getMarkdownSearch(path) {
+			const dotGitHubParts = /eclipse-simrel\/.github\/main\/(?<path>.*)/.exec(path);
+			if (dotGitHubParts != null) {
+				return `?file=${dotGitHubParts.groups.path}`;
+			}
+			return `?file=${path}`;
+		}
+
+		function getMarkdownURL(path) {
+			const parts = /^eclipse-simrel\/simrel-webiste\/main(.*)/.exec(path);
+			if (parts == null) {
+				return `${markdownBase}${path}`;
+			}
+			return `${selfHostedMarkdownBase}${parts[1].replace(/^\//, '')}`;
+		}
+
+		const file = getFileParameter();
+		const dotGitHub = /(?<root>wiki|profile)\/(?<path>.*)/.exec(file);
+		const parts = /(?<org>eclipse-packaging)\/(?<repo>[^/]+)\/(?<branch>[^/]+)\/(?<path>.*)/.exec(file);
+		const org = parts != null ? parts.groups.org : 'eclipse-simrel';
+		const repo = parts != null ? parts.groups.repo : dotGitHub == null ? 'simrel-website' : '.github';
+		const branch = parts != null ? parts.groups.branch : 'main';
+		const path = parts != null ? parts.groups.path : dotGitHub == null ? file : `${dotGitHub.groups.root}/${dotGitHub.groups.path}`;
+
+		const isLocalHost = window.location.hostname == 'localhost';
+		const selfHosted = repo == 'simrel-website';
+		const repoName = dotGitHub == null ? 'SimRel' : 'SimRel Wiki';
+
+		tableOfContentsAside = `
+<div id="toc" class="col-md-6">
+	<aside>
+		<ul class="ul-left-nav">
+			<div  class="sideitem">
+				<h2>Table of Contents</h2>
+				<div id="toc-target">
+				</div>
+			</div>
+		</ul>
+	</aside>
+</div>`;
+
+		generate();
+
+		const targetElement = document.getElementById('markdown-target');
+
+		function fixHash(hash) {
+			return hash.toLowerCase();
+		}
+
+		const specializedBreadcrumpbs = [
+			{pattern: /^eclipse-simrel\/.github\/main\/profile.*/, replacement: null},
+			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/Simultaneous_Release.md.*/, replacement: {label: 'Schedule', href: null}},
+			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/Planning_Council.md.*/, replacement: {label: 'Planning Council', href: null}},
+			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/Overview.md.*/, replacement: {label: 'Overview', href: null}},
+			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/Simultaneous_Release_Requirements.md.*/, replacement: {label: 'Requirements', href: null}},
+			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/Simultaneous_Release_Roles.md.*/, replacement: {label: 'Roles', href: null}},
+			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/Simultaneous_Release_Plan.md.*/, replacement: {label: 'Plan', href: null}},
+			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/Contributing_to_Simrel_Aggregation_Build.md.*/, replacement: {label: 'Contribution', href: null}},
+			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/Simultaneous_Release_Cycle_FAQ.md.*/, replacement: {label: 'FAQ', href: null}},
+			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/Release_Checklist.md.*/, replacement: {label: 'Checklist', href: null}},
+			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/[0-9-]+.md.*/, replacement: {label: '$', href: null}},
+			{pattern: /^eclipse-simrel\/.github\/main.*/, replacement: null},
+			{pattern: /^eclipse-packaging\/packages\/master\/README.md.*/, replacement: {label: 'EPP', href: null}},
+			{pattern: /^eclipse-packaging\/packages\/master.*/, replacement: null},
+		];
+
+		function generateBreadcrumbPath(crumbPath, segment) {
+			const fullPath = `${org}/${repo}/${branch}${crumbPath}`;
+			for (const matcher of specializedBreadcrumpbs) {
+				const match = matcher.pattern.exec(fullPath);
+				if (match != null) {
+					const replacement = matcher.replacement;
+					if (replacement != null && replacement.label == '$') {
+						return {
+							label: segment.length == 0 ? repoName : niceName(segment.replace(/\.md$/, '')),
+							href: null
+						};
+					}
+					return replacement;
+				}
+			}
+
+			return {
+				label: segment.length == 0 ? repoName : niceName(segment.replace(/\.md$/, '')),
+				href: getMarkdownSearch(fullPath)
+			};
+		}
+
+		function generateFileList(files) {
+			const fileElements = files.map(file => {
+				const fileURL = new URL(file.url);
+				const fileName = fileURL.pathname.endsWith('/docs') || fileURL.pathname.endsWith('/profile') || fileURL.pathname.endsWith('/') || isLocalHost && file['type'] == 'dir' ?
+					/(?<filename>[^./][^/]+)\/?$/.exec(fileURL.pathname) :
+					/(?<filename>[^/]+)\.md$/.exec(fileURL.pathname);
+				if (fileName == null) {
+					return '';
+				}
+				const branch = fileURL.searchParams.get('ref');
+				const parts = /\/repos\/(?<org>[^/]+)\/(?<repo>[^/]+)\/contents\/(?<path>.*)/.exec(fileURL.pathname);
+				const url = new URL(window.location);
+				url.hash = '';
+				url.search = getMarkdownSearch(`${parts.groups.org}/${parts.groups.repo}/${branch}/${parts.groups.path}`.replace('//', '/'));
+				const label = niceName(fileName.groups.filename);
+				return `<div><a href="${url}">${label}<a/></div>\n`;
+			});
+
+			const folder = path.replace(/\/$/, '');
+			const heading = `<h2>Contents of ${org}/${repo}${folder.length == 0 ? '' : ` - ${folder}`}</h2>\n`;
+
+			targetElement.innerHTML = heading + fileElements.join('');
+		}
+
+		function generateMarkdown(logicalBaseURL, response) {
+			const text = response;
+			const editLink = `<a id="edit-markdown-link" href=""><span class="orange">\u270E Improve this page</span></a>\n`;
+			marked.use(markedGfmHeadingId.gfmHeadingId());
+			marked.use({
+				hooks: {
+					postprocess(html) {
+						return `${html}`;
+					}
+				}
+			});
+			targetElement.innerHTML = editLink + marked.parse(text);
+
+
+			const headings = markedGfmHeadingId.getHeadingList();
+			const headingText = `
+<ul id="table-of-contents">
+${headings.map(({id, raw, level}) => `<li class="tl${level}"><a href="#${id}">${raw}</a></li>`).join(' ')}
+</ul>
+`;
+			document.getElementById('toc-target').replaceChildren(...toElements(headingText));
+
+			const logo = targetElement.querySelector('img[src$="SimRel-Color.svg"]');
+			if (logo != null) {
+				const next = logo.nextElementSibling
+				logo.remove();
+				if (next != null) {
+					next.remove();
+				}
+			}
+
+			const imgs = targetElement.querySelectorAll("img[src]");
+			for (const img of imgs) {
+				const src = img.getAttribute('src');
+				if (src == null) {
+					continue;
+				}
+
+				if (!src.startsWith('http')) {
+					img.src = new URL(`https://raw.githubusercontent.com/${org}/${repo}/${branch}/${path}/../${src}`);
+				}
+			}
+
+			const as = targetElement.querySelectorAll("a[href]");
+			for (const a of as) {
+				const href = a.getAttribute('href');
+				if (href == null || href == '') {
+					continue;
+				}
+
+				if (href.startsWith('#')) {
+					a.setAttribute('href', fixHash(href));
+					continue;
+				}
+
+				const logicalHref = new URL(href, logicalBaseURL);
+				if (!logicalHref.pathname.endsWith('.md')) {
+					if (/^https:\/\/github.com\/[^\/]+$/.exec(logicalHref.toString())) {
+						if (isAcknowledgements) {
+							generateContributorAvatars(a, logicalHref);
+						} else {
+							generateContributorSection(a, logicalHref);
+						}
+					} else if (!href.startsWith('http')) {
+						a.href = new URL(`https://github.com/${org}/${repo}/blob/${branch}/${path}/../${href}`);
+					}
+					continue;
+				}
+
+				const url = new URL(window.location);
+				url.hash = fixHash(logicalHref.hash);
+				if (logicalHref.hostname == 'api.github.com') {
+					const parts = /\/repos\/(?<org>[^/]+)\/(?<repo>[^/]+)\/contents\/(?<path>.*)/.exec(logicalHref.pathname);
+					if (parts != null) {
+						url.search = getMarkdownSearch(`${parts.groups.org}/${parts.groups.repo}/${branch}/${parts.groups.path}`);
+						a.href = url;
+					}
+				} else if (logicalHref.hostname == 'github.com') {
+					const parts = /(?<org>[^/]+)\/(?<repo>[^/]+)\/blob\/(?<branch>[^/]+)\/(?<path>.*)/.exec(logicalHref.pathname);
+					if (parts != null) {
+						url.search = getMarkdownSearch(`${parts.groups.org}/${parts.groups.repo}/${parts.groups.branch}/${parts.groups.path}`);
+						a.href = url;
+					}
+				}
+			}
+
+			document.getElementById('edit-markdown-link').href = `https://github.com/${org}/${repo}/blob/${branch}/${path}`;
+
+			// Ensure that we nagivate to the target.
+			if (document.location.hash.includes('#')) {
+				document.location.hash = document.location.hash;
+			}
+
+			updateTocSize();
+		}
+
+		document.title = `SimRel | ${niceName(file.replace(/^.*\//, ''))}`;
+
+		const normalizedPath = path.replace(/\/$/, '');
+		const breadcrumb = document.querySelector(".breadcrumb");
+		const segments = normalizedPath == '' ? [''] : ['', ...normalizedPath.split('/')];
+		let crumbPath = '';
+		for (const segment of segments) {
+			crumbPath = (crumbPath == '/' ? '/' : crumbPath + '/') + segment;
+			const crumb = generateBreadcrumbPath(crumbPath, segment);
+			if (crumb != null) {
+				const href = crumb.href;
+				breadcrumb.append(...toElements(href == null ? `<li>${crumb.label}</li>` : `<li><a href="${crumb.href}">${crumb.label}</a></li>`));
+			}
+		}
+
+		const logicalBaseURL = new URL(`https://api.github.com/repos/${org}/${repo}/contents/${path}`);
+		const apiURL = `${logicalBaseURL}?ref=${branch}`;
+		const defaultURL = selfHosted ? `${scriptBase}${path}` : apiURL;
+
+		const localURL = new URL(file, window.location);
+		// defaultURL = localURL.toString();
+
+		function defaultHandler(url) {
+			fetch(url).then(response => {
+				return response.text();
+			}).then(text => {
+				if (text.startsWith('<') && !url.toString().endsWith('.md')) {
+					if (text.startsWith('<img') || text.match(/<ul><li><a href="[^"]+"> Parent Directory<\/a><\/li>/)) {
+						const links = [...text.matchAll(/href="([^./][^"]+?(\.md|\/))"/g).map(match => {
+							return {url: `https://api.github.com/repos/${org}/${repo}/contents/${path}/${match[1]}?ref=${branch}`};
+						})];
+						generateFileList(links);
+					} else if (url != apiURL) {
+						targetElement.innerHTML = `Cannot produce directory listing ${url} redirecting to ${apiURL}.`;
+						defaultHandler(apiURL);
+					} else {
+						targetElement.innerHTML = `Cannot produce directory listing ${url}.`;
+					}
+				} else if (text.startsWith('{') || text.startsWith('[')) {
+					const json = JSON.parse(text);
+					generateMarkdown(logicalBaseURL, json instanceof Array ? json : blobToText(json.content));
+				} else {
+					generateMarkdown(logicalBaseURL, text);
+				}
+			});
+		}
+
+		if (!selfHosted && isLocalHost) {
+			const localURL = new URL(window.location);
+			localURL.hash = '';
+			localURL.search = '';
+			localURL.pathname = `${org}/${repo}/${branch}/${path}`;
+			fetch(localURL, {method: 'HEAD', cache: "no-store"}).then(response => {
+				if (response.status == 200 && response.headers.get('Server') == 'org.eclipse.oomph.internal.util.HTTPServer') {
+					defaultHandler(localURL);
+				} else {
+					defaultHandler(defaultURL);
+				}
+			});
+		} else {
+			defaultHandler(defaultURL);
+		}
+
+		function updateTocSize() {
+			const toc = document.getElementById('toc');
+			const tocInner = document.getElementById('table-of-contents');
+			if (toc != null && tocInner != null) {
+				const height = window.document.documentElement.clientHeight;
+				tocInner.style.maxHeight = `${height - tocInner.getBoundingClientRect().top - 20}px`;
+				toc.style.maxHeight = `${height - toc.getBoundingClientRect().top - 20}px`;
+			}
+		}
+
+		const onscroll = window.onscroll;
+		window.onscroll = function (event) {
+			if (onscroll != null) {
+				onscroll(event);
+			}
+			updateTocSize();
+		};
+		window.onresize = updateTocSize;
+
+		//]]>
+	</script>
+
+</body>

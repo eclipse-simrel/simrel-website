@@ -1,2 +1,2 @@
 # simrel-website
-The project website.
+The website for the SimRel project
