@@ -60,6 +60,7 @@ let projectAside = `
 <a href="${scriptBase}?file=wiki/Simultaneous_Release.md">Schedule</a>
 <a href="${scriptBase}?file=wiki/SimRel/Overview.md">Overview</a>
 <a href="${scriptBase}?file=wiki/SimRel/Simultaneous_Release_Requirements.md">Requirements</a>
+<a href="${scriptBase}?file=report/report.md">Participants</a>
 <a href="${scriptBase}?file=wiki/SimRel/Simultaneous_Release_Cycle_FAQ.md">FAQ</a>
 `;
 
