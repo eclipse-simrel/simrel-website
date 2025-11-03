@@ -195,43 +195,28 @@
 			return hash.toLowerCase();
 		}
 
-		const specializedBreadcrumpbs = [
-			{pattern: /^eclipse-simrel\/.github\/main\/profile.*/, replacement: null},
-			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/Simultaneous_Release.md.*/, replacement: {label: 'Schedule', href: null}},
-			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/Planning_Council.md.*/, replacement: {label: 'Planning Council', href: null}},
-			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/Overview.md.*/, replacement: {label: 'Overview', href: null}},
-			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/Simultaneous_Release_Requirements.md.*/, replacement: {label: 'Requirements', href: null}},
-			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/Simultaneous_Release_Roles.md.*/, replacement: {label: 'Roles', href: null}},
-			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/Simultaneous_Release_Plan.md.*/, replacement: {label: 'Plan', href: null}},
-			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/Contributing_to_Simrel_Aggregation_Build.md.*/, replacement: {label: 'Contribution', href: null}},
-			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/Simultaneous_Release_Cycle_FAQ.md.*/, replacement: {label: 'FAQ', href: null}},
-			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/Release_Checklist.md.*/, replacement: {label: 'Checklist', href: null}},
-			{pattern: /^eclipse-simrel\/.github\/main\/wiki\/SimRel\/[0-9-]+.md.*/, replacement: {label: '$', href: null}},
-			{pattern: /^eclipse-simrel\/.github\/main.*/, replacement: null},
-			{pattern: /^eclipse-packaging\/packages\/master\/README.md.*/, replacement: {label: 'EPP', href: null}},
-			{pattern: /^eclipse-packaging\/packages\/master.*/, replacement: null},
-		];
-
-		function generateBreadcrumbPath(crumbPath, segment) {
-			const fullPath = `${org}/${repo}/${branch}${crumbPath}`;
-			for (const matcher of specializedBreadcrumpbs) {
-				const match = matcher.pattern.exec(fullPath);
-				if (match != null) {
-					const replacement = matcher.replacement;
-					if (replacement != null && replacement.label == '$') {
-						return {
-							label: segment.length == 0 ? repoName : niceName(segment.replace(/\.md$/, '')),
-							href: null
-						};
+		function generateBreadcrumbDetails(path) {
+			const breadcrumb = document.querySelector(".breadcrumb");
+			if (path == 'wiki/Simultaneous_Release.md') {
+				document.title = `SimRel | Schedule`;
+				breadcrumb.append(...toElements(`<li>Schedule</li>`));
+			} else {
+				const matchRelease = /^wiki\/SimRel\/(?<name>[0-9-]+).md$/.exec(path);
+				if (matchRelease != null) {
+					const name = matchRelease.groups.name;
+					breadcrumb.append(...toElements(`<li><a href="${scriptBase}?file=wiki/Simultaneous_Release.md">Schedule</a></li> <li>${name}</li>`));
+					document.title = `SimRel | ${name}`;
+				} else {
+					const matchBasic = /^wiki\/SimRel\/(?<qualifier>Simultaneous_Release_Cycle_|Simultaneous_Release_|Contributing_to_Simrel_Aggregation_Build|Release_|)(?<name>.*).md$/.exec(path);
+					if (matchBasic != null) {
+						const name = niceName(matchBasic.groups.name);
+						const fixedName = name == '' ? 'Contibution' : name;
+						breadcrumb.append(...toElements(`<li>${fixedName}</li>`));
+						document.title = `SimRel | ${fixedName}`;
+					} else {
 					}
-					return replacement;
 				}
 			}
-
-			return {
-				label: segment.length == 0 ? repoName : niceName(segment.replace(/\.md$/, '')),
-				href: getMarkdownSearch(fullPath)
-			};
 		}
 
 		function generateFileList(files) {
@@ -354,20 +339,7 @@ ${headings.map(({id, raw, level}) => `<li class="tl${level}"><a href="#${id}">${
 			updateTocSize();
 		}
 
-		document.title = `SimRel | ${niceName(file.replace(/^.*\//, ''))}`;
-
-		const normalizedPath = path.replace(/\/$/, '');
-		const breadcrumb = document.querySelector(".breadcrumb");
-		const segments = normalizedPath == '' ? [''] : ['', ...normalizedPath.split('/')];
-		let crumbPath = '';
-		for (const segment of segments) {
-			crumbPath = (crumbPath == '/' ? '/' : crumbPath + '/') + segment;
-			const crumb = generateBreadcrumbPath(crumbPath, segment);
-			if (crumb != null) {
-				const href = crumb.href;
-				breadcrumb.append(...toElements(href == null ? `<li>${crumb.label}</li>` : `<li><a href="${crumb.href}">${crumb.label}</a></li>`));
-			}
-		}
+		generateBreadcrumbDetails(path.replace(/\/$/, ''));
 
 		const logicalBaseURL = new URL(`https://api.github.com/repos/${org}/${repo}/contents/${path}`);
 		const apiURL = `${logicalBaseURL}?ref=${branch}`;
