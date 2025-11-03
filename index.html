@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>Documentation | SimRel</title>
+	<title>SimRel | Documentation</title>
 	<link rel="preconnect stylesheet" href="project.css" />
 	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
@@ -32,6 +32,10 @@
 
 		tr:nth-child(2n) {
 			background-color: seashell;
+		}
+
+		li p {
+			margin: 0;
 		}
 
 		table {
@@ -195,9 +199,24 @@
 			return hash.toLowerCase();
 		}
 
+		function toSiteURL(url) {
+			if (url.hostname == 'api.github.com' && url.pathname.startsWith('/repos/eclipse-simrel/simrel-website/contents')) {
+				const result = new URL(window.location);
+				result.pathname = url.pathname.replace(/\/repos\/eclipse-simrel\/simrel-website\/contents/, '/simrel')
+				result.hash = url.hash;
+				result.search = url.search;
+				return result;
+			} else {
+				return null;
+			}
+		}
+
 		function generateBreadcrumbDetails(path) {
 			const breadcrumb = document.querySelector(".breadcrumb");
-			if (path == 'wiki/Simultaneous_Release.md') {
+			if (path.startsWith('report/report.md')) {
+				document.title = `SimRel | Participants`;
+				breadcrumb.append(...toElements(`<li>Participants</li>`));
+			} else if (path.startsWith('wiki/Simultaneous_Release.md')) {
 				document.title = `SimRel | Schedule`;
 				breadcrumb.append(...toElements(`<li>Schedule</li>`));
 			} else {
@@ -245,7 +264,7 @@
 
 		function generateMarkdown(logicalBaseURL, response) {
 			const text = response;
-			const editLink = `<a id="edit-markdown-link" href=""><span class="orange">\u270E Improve this page</span></a>\n`;
+			const editLink = logicalBaseURL.toString().includes('report.md') ? '' : `<a id="edit-markdown-link" href=""><span class="orange">\u270E Improve this page</span></a>\n`;
 			marked.use(markedGfmHeadingId.gfmHeadingId());
 			marked.use({
 				hooks: {
@@ -255,7 +274,6 @@
 				}
 			});
 			targetElement.innerHTML = editLink + marked.parse(text);
-
 
 			const headings = markedGfmHeadingId.getHeadingList();
 			const headingText = `
@@ -282,7 +300,13 @@ ${headings.map(({id, raw, level}) => `<li class="tl${level}"><a href="#${id}">${
 				}
 
 				if (!src.startsWith('http')) {
-					img.src = new URL(`https://raw.githubusercontent.com/${org}/${repo}/${branch}/${path}/../${src}`);
+					const logicalSrc = new URL(src, logicalBaseURL);
+					const siteURL = toSiteURL(logicalSrc);
+					if (siteURL != null) {
+						img.src = siteURL;
+					} else {
+						img.src = new URL(`https://raw.githubusercontent.com/${org}/${repo}/${branch}/${path}/../${src}`);
+					}
 				}
 			}
 
@@ -299,14 +323,11 @@ ${headings.map(({id, raw, level}) => `<li class="tl${level}"><a href="#${id}">${
 				}
 
 				const logicalHref = new URL(href, logicalBaseURL);
-				if (!logicalHref.pathname.endsWith('.md')) {
-					if (/^https:\/\/github.com\/[^\/]+$/.exec(logicalHref.toString())) {
-						if (isAcknowledgements) {
-							generateContributorAvatars(a, logicalHref);
-						} else {
-							generateContributorSection(a, logicalHref);
-						}
-					} else if (!href.startsWith('http')) {
+				if (logicalHref.pathname.endsWith('report.svg')) {
+					a.href = 'report/report.svg';
+					continue;
+				} else if (!logicalHref.pathname.endsWith('.md')) {
+					if (!href.startsWith('http')) {
 						a.href = new URL(`https://github.com/${org}/${repo}/blob/${branch}/${path}/../${href}`);
 					}
 					continue;
@@ -317,19 +338,26 @@ ${headings.map(({id, raw, level}) => `<li class="tl${level}"><a href="#${id}">${
 				if (logicalHref.hostname == 'api.github.com') {
 					const parts = /\/repos\/(?<org>[^/]+)\/(?<repo>[^/]+)\/contents\/(?<path>.*)/.exec(logicalHref.pathname);
 					if (parts != null) {
-						url.search = getMarkdownSearch(`${parts.groups.org}/${parts.groups.repo}/${branch}/${parts.groups.path}`);
-						a.href = url;
+						if (parts.groups.org == 'eclipse-simrel' || parts.groups.org == 'eclipse-packaging') {
+							url.search = getMarkdownSearch(`${parts.groups.org}/${parts.groups.repo}/${branch}/${parts.groups.path}`);
+							a.href = url;
+						}
 					}
 				} else if (logicalHref.hostname == 'github.com') {
 					const parts = /(?<org>[^/]+)\/(?<repo>[^/]+)\/blob\/(?<branch>[^/]+)\/(?<path>.*)/.exec(logicalHref.pathname);
 					if (parts != null) {
-						url.search = getMarkdownSearch(`${parts.groups.org}/${parts.groups.repo}/${parts.groups.branch}/${parts.groups.path}`);
-						a.href = url;
+						if (parts.groups.org == 'eclipse-simrel' || parts.groups.org == 'eclipse-packaging') {
+							url.search = getMarkdownSearch(`${parts.groups.org}/${parts.groups.repo}/${parts.groups.branch}/${parts.groups.path}`);
+							a.href = url;
+						}
 					}
 				}
 			}
 
-			document.getElementById('edit-markdown-link').href = `https://github.com/${org}/${repo}/blob/${branch}/${path}`;
+			const editMarkdownLink = document.getElementById('edit-markdown-link');
+			if (editMarkdownLink != null) {
+				editMarkdownLink.href = `https://github.com/${org}/${repo}/blob/${branch}/${path}`;
+			}
 
 			// Ensure that we nagivate to the target.
 			if (document.location.hash.includes('#')) {
