@@ -362,7 +362,7 @@ function generateNav() {
 <div class="header_nav">
 	<div class="col-xs-24 col-md-10 vcenter">
 		<a href="${scriptBase}">
-			<img src="${scriptBase}images/simrel-logo-with-title.svg" alt="The Main Index Page" width="50%" xheight="auto" class="img-responsive header_nav_logo"/>
+			<img id="header-nav-img" src="${scriptBase}images/simrel-logo-with-title.svg" alt="The Main Index Page" width="50%" xheight="auto" class="img-responsive header_nav_logo"/>
 		</a>
 	</div><!-- NO SPACES
  --><div class="col-xs-24 col-md-14 vcenter">
