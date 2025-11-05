@@ -193,6 +193,13 @@
 
 		generate();
 
+		if (org == 'eclipse-packaging') {
+			const headerNavImg = document.getElementById('header-nav-img');
+			if (headerNavImg != null) {
+				headerNavImg.src = 'https://raw.githubusercontent.com/eclipse-packaging/.github/refs/heads/main/assets/artwork/svg/EPP-Color-Vertical.svg';
+			}
+		}
+
 		const targetElement = document.getElementById('markdown-target');
 
 		function fixHash(hash) {
@@ -233,6 +240,12 @@
 						breadcrumb.append(...toElements(`<li>${fixedName}</li>`));
 						document.title = `SimRel | ${fixedName}`;
 					} else {
+						const participantMatch = /^wiki\/SimRel\/(?<name>.*)_participants.json$/.exec(path);
+						if (participantMatch != null) {
+							const name = `${participantMatch.groups.name} Participants`;
+							document.title = `SimRel | ${name}`;
+							breadcrumb.append(...toElements(`<li>${name}</li>`));
+						}
 					}
 				}
 			}
@@ -241,9 +254,9 @@
 		function generateFileList(files) {
 			const fileElements = files.map(file => {
 				const fileURL = new URL(file.url);
-				const fileName = fileURL.pathname.endsWith('/docs') || fileURL.pathname.endsWith('/profile') || fileURL.pathname.endsWith('/') || isLocalHost && file['type'] == 'dir' ?
+				const fileName = fileURL.pathname.endsWith('/profile') || fileURL.pathname.endsWith('/') || isLocalHost && file['type'] == 'dir' ?
 					/(?<filename>[^./][^/]+)\/?$/.exec(fileURL.pathname) :
-					/(?<filename>[^/]+)\.md$/.exec(fileURL.pathname);
+					/(?<filename>[^/]+)\.(md|json)$/.exec(fileURL.pathname);
 				if (fileName == null) {
 					return '';
 				}
@@ -262,109 +275,148 @@
 			targetElement.innerHTML = heading + fileElements.join('');
 		}
 
-		function generateMarkdown(logicalBaseURL, response) {
-			const text = response;
-			const editLink = logicalBaseURL.toString().includes('report.md') ? '' : `<a id="edit-markdown-link" href=""><span class="orange">\u270E Improve this page</span></a>\n`;
-			marked.use(markedGfmHeadingId.gfmHeadingId());
-			marked.use({
-				hooks: {
-					postprocess(html) {
-						return `${html}`;
-					}
-				}
-			});
-			targetElement.innerHTML = editLink + marked.parse(text);
+		function generateReleaseParticipants(logicalBaseURL, response) {
+			const json = JSON.parse(response);
+			const release = Object.keys(json);
+			const projects = json[release].projects;
+			const projectList = Object.entries(projects).map(([key, value]) => {
+				const project_name = value.project_name;
+				const new_and_noteworthy_url = value.new_and_noteworthy_url;
+				const news = new_and_noteworthy_url == null ? '' : ` [&#128240;](${new_and_noteworthy_url})`;
+				return `1. [${project_name}](https://projects.eclipse.org/projects/${key})${news}`;
+			}).join('\n');
+			generateMarkdown(logicalBaseURL, `
+# [${release}](${release}.md)
 
-			const headings = markedGfmHeadingId.getHeadingList();
-			const headingText = `
+${projectList}
+
+<details>
+<summary>${release}_participants.json</summary>
+
+${"```"}
+${response}
+${"```"}
+</details>
+`)
+		}
+
+		function generateMarkdown(logicalBaseURL, response) {
+			if (response instanceof Array) {
+				generateFileList(response);
+			} else if (response.startsWith('{')) {
+				if (logicalBaseURL.toString().endsWith("_participants.json")) {
+					generateReleaseParticipants(logicalBaseURL, response);
+				} else {
+					generateMarkdown(logicalBaseURL, `
+${"```"}
+${response}
+${"```"}
+`);
+				}
+			} else {
+				const text = response;
+				const editLink = logicalBaseURL.toString().includes('report.md') ? '' : `<a id="edit-markdown-link" href=""><span class="orange">\u270E Improve this page</span></a>\n`;
+				marked.use(markedGfmHeadingId.gfmHeadingId());
+				marked.use({
+					hooks: {
+						postprocess(html) {
+							return `${html}`;
+						}
+					}
+				});
+				targetElement.innerHTML = editLink + marked.parse(text);
+
+				const headings = markedGfmHeadingId.getHeadingList();
+				const headingText = `
 <ul id="table-of-contents">
 ${headings.map(({id, raw, level}) => `<li class="tl${level}"><a href="#${id}">${raw}</a></li>`).join(' ')}
 </ul>
 `;
-			document.getElementById('toc-target').replaceChildren(...toElements(headingText));
+				document.getElementById('toc-target').replaceChildren(...toElements(headingText));
 
-			const logo = targetElement.querySelector('img[src$="SimRel-Color.svg"]');
-			if (logo != null) {
-				const next = logo.nextElementSibling
-				logo.remove();
-				if (next != null) {
-					next.remove();
-				}
-			}
-
-			const imgs = targetElement.querySelectorAll("img[src]");
-			for (const img of imgs) {
-				const src = img.getAttribute('src');
-				if (src == null) {
-					continue;
-				}
-
-				if (!src.startsWith('http')) {
-					const logicalSrc = new URL(src, logicalBaseURL);
-					const siteURL = toSiteURL(logicalSrc);
-					if (siteURL != null) {
-						img.src = siteURL;
-					} else {
-						img.src = new URL(`https://raw.githubusercontent.com/${org}/${repo}/${branch}/${path}/../${src}`);
+				const logo = targetElement.querySelector('img[src$="SimRel-Color.svg"]');
+				if (logo != null) {
+					const next = logo.nextElementSibling
+					logo.remove();
+					if (next != null) {
+						next.remove();
 					}
 				}
-			}
 
-			const as = targetElement.querySelectorAll("a[href]");
-			for (const a of as) {
-				const href = a.getAttribute('href');
-				if (href == null || href == '') {
-					continue;
-				}
-
-				if (href.startsWith('#')) {
-					a.setAttribute('href', fixHash(href));
-					continue;
-				}
-
-				const logicalHref = new URL(href, logicalBaseURL);
-				if (logicalHref.pathname.endsWith('report.svg')) {
-					a.href = 'report/report.svg';
-					continue;
-				} else if (!logicalHref.pathname.endsWith('.md')) {
-					if (!href.startsWith('http')) {
-						a.href = new URL(`https://github.com/${org}/${repo}/blob/${branch}/${path}/../${href}`);
+				const imgs = targetElement.querySelectorAll("img[src]");
+				for (const img of imgs) {
+					const src = img.getAttribute('src');
+					if (src == null) {
+						continue;
 					}
-					continue;
-				}
 
-				const url = new URL(window.location);
-				url.hash = fixHash(logicalHref.hash);
-				if (logicalHref.hostname == 'api.github.com') {
-					const parts = /\/repos\/(?<org>[^/]+)\/(?<repo>[^/]+)\/contents\/(?<path>.*)/.exec(logicalHref.pathname);
-					if (parts != null) {
-						if (parts.groups.org == 'eclipse-simrel' || parts.groups.org == 'eclipse-packaging') {
-							url.search = getMarkdownSearch(`${parts.groups.org}/${parts.groups.repo}/${branch}/${parts.groups.path}`);
-							a.href = url;
-						}
-					}
-				} else if (logicalHref.hostname == 'github.com') {
-					const parts = /(?<org>[^/]+)\/(?<repo>[^/]+)\/blob\/(?<branch>[^/]+)\/(?<path>.*)/.exec(logicalHref.pathname);
-					if (parts != null) {
-						if (parts.groups.org == 'eclipse-simrel' || parts.groups.org == 'eclipse-packaging') {
-							url.search = getMarkdownSearch(`${parts.groups.org}/${parts.groups.repo}/${parts.groups.branch}/${parts.groups.path}`);
-							a.href = url;
+					if (!src.startsWith('http')) {
+						const logicalSrc = new URL(src, logicalBaseURL);
+						const siteURL = toSiteURL(logicalSrc);
+						if (siteURL != null) {
+							img.src = siteURL;
+						} else {
+							img.src = new URL(`https://raw.githubusercontent.com/${org}/${repo}/${branch}/${path}/../${src}`);
 						}
 					}
 				}
-			}
 
-			const editMarkdownLink = document.getElementById('edit-markdown-link');
-			if (editMarkdownLink != null) {
-				editMarkdownLink.href = `https://github.com/${org}/${repo}/blob/${branch}/${path}`;
-			}
+				const as = targetElement.querySelectorAll("a[href]");
+				for (const a of as) {
+					const href = a.getAttribute('href');
+					if (href == null || href == '') {
+						continue;
+					}
 
-			// Ensure that we nagivate to the target.
-			if (document.location.hash.includes('#')) {
-				document.location.hash = document.location.hash;
-			}
+					if (href.startsWith('#')) {
+						a.setAttribute('href', fixHash(href));
+						continue;
+					}
 
-			updateTocSize();
+					const logicalHref = new URL(href, logicalBaseURL);
+					if (logicalHref.pathname.endsWith('report.svg')) {
+						a.href = 'report/report.svg';
+						continue;
+					} else if (!logicalHref.pathname.endsWith('.md')) {
+						if (!href.startsWith('http')) {
+							a.href = new URL(`https://github.com/${org}/${repo}/blob/${branch}/${path}/../${href}`);
+						}
+						continue;
+					}
+
+					const url = new URL(window.location);
+					url.hash = fixHash(logicalHref.hash);
+					if (logicalHref.hostname == 'api.github.com') {
+						const parts = /\/repos\/(?<org>[^/]+)\/(?<repo>[^/]+)\/contents\/(?<path>.*)/.exec(logicalHref.pathname);
+						if (parts != null) {
+							if (parts.groups.org == 'eclipse-simrel' || parts.groups.org == 'eclipse-packaging') {
+								url.search = getMarkdownSearch(`${parts.groups.org}/${parts.groups.repo}/${branch}/${parts.groups.path}`);
+								a.href = url;
+							}
+						}
+					} else if (logicalHref.hostname == 'github.com') {
+						const parts = /(?<org>[^/]+)\/(?<repo>[^/]+)\/blob\/(?<branch>[^/]+)\/(?<path>.*)/.exec(logicalHref.pathname);
+						if (parts != null) {
+							if (parts.groups.org == 'eclipse-simrel' || parts.groups.org == 'eclipse-packaging') {
+								url.search = getMarkdownSearch(`${parts.groups.org}/${parts.groups.repo}/${parts.groups.branch}/${parts.groups.path}`);
+								a.href = url;
+							}
+						}
+					}
+				}
+
+				const editMarkdownLink = document.getElementById('edit-markdown-link');
+				if (editMarkdownLink != null) {
+					editMarkdownLink.href = `https://github.com/${org}/${repo}/blob/${branch}/${path}`;
+				}
+
+				// Ensure that we nagivate to the target.
+				if (document.location.hash.includes('#')) {
+					document.location.hash = document.location.hash;
+				}
+
+				updateTocSize();
+			}
 		}
 
 		generateBreadcrumbDetails(path.replace(/\/$/, ''));
@@ -393,8 +445,12 @@ ${headings.map(({id, raw, level}) => `<li class="tl${level}"><a href="#${id}">${
 						targetElement.innerHTML = `Cannot produce directory listing ${url}.`;
 					}
 				} else if (text.startsWith('{') || text.startsWith('[')) {
-					const json = JSON.parse(text);
-					generateMarkdown(logicalBaseURL, json instanceof Array ? json : blobToText(json.content));
+					if (url.toString().endsWith('.json')) {
+						generateMarkdown(logicalBaseURL, text);
+					} else {
+						const json = JSON.parse(text);
+						generateMarkdown(logicalBaseURL, json instanceof Array ? json : blobToText(json.content));
+					}
 				} else {
 					generateMarkdown(logicalBaseURL, text);
 				}
