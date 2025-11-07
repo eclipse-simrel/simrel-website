@@ -9,6 +9,7 @@ const scriptBase = new URL(".", document.currentScript.src).href
 const markdownBase = `${scriptBase}markdown/?file=`;
 const selfHostedMarkdownBase = `${scriptBase}markdown/?f=`;
 const newsBase = `${scriptBase}news/news.html?file=`;
+const isLocalHost = window.location.hostname == 'localhost';
 
 let meta = toElements(`
 <meta charset="utf-8">
@@ -55,12 +56,16 @@ let defaultNav = toElements(`
 </a>
 `);
 
+let currentReleaseCycle = getCurrentReleaseCycle();
+
 let projectAside = `
 <a class="separator" href="https://projects.eclipse.org/projects/technology.simrel"><i class='fa fa-cube'></i> SimRel Project</a>
 <a href="${scriptBase}?file=wiki/Simultaneous_Release.md">Schedule</a>
+<a id="current-release-cycle" href="">&nbsp;&nbsp;&bullet;&nbsp;${currentReleaseCycle}</a>
+<a id="current-release-cycle-participants" href="">&nbsp;&nbsp;&nbsp;&nbsp;&bullet;&nbsp;Participants</a>
 <a href="${scriptBase}?file=wiki/SimRel/Overview.md">Overview</a>
 <a href="${scriptBase}?file=wiki/SimRel/Simultaneous_Release_Requirements.md">Requirements</a>
-<a href="${scriptBase}?file=report/report.md">Participants</a>
+<a href="${scriptBase}?file=report/report.md">Contributors</a>
 <a href="${scriptBase}?file=wiki/SimRel/Simultaneous_Release_Cycle_FAQ.md">FAQ</a>
 `;
 
@@ -411,6 +416,69 @@ function generateAside() {
 	</aside>
 </div>
 `;
+}
+
+function getCurrentReleaseCycle() {
+	handleDocument('eclipse-simrel', 'simrel.build', 'main', 'simrel.aggr', content => {
+		const match = /label="(?<label>[^"]+)"/.exec(content);
+		if (match != null) {
+			const currentReleaseCycleElement = document.getElementById('current-release-cycle');
+			if (currentReleaseCycleElement != null) {
+				currentReleaseCycleElement.innerHTML = currentReleaseCycleElement.innerHTML.replace(/[0-9-]+/, match.groups.label);
+				currentReleaseCycleElement.href = `${scriptBase}?file=wiki/SimRel/${match.groups.label}.md`;
+			}
+			const currentReleaseCycleParticipantsElement = document.getElementById('current-release-cycle-participants');
+			if (currentReleaseCycleParticipantsElement != null) {
+				currentReleaseCycleParticipantsElement.innerHTML = currentReleaseCycleParticipantsElement.innerHTML.replace(/[0-9-]+/, match.groups.label);
+				currentReleaseCycleParticipantsElement.href = `${scriptBase}?file=wiki/SimRel/${match.groups.label}_participants.json`;
+			}
+		}
+	});
+
+	// Try to get it roughly correct; it will be corrected when the document is loaded.
+	const now = new Date();
+	const year = now.getFullYear();
+	const month = now.getMonth();
+	const day = now.getDay();
+	const quarter = (((month - 1) * 30 + day + 19) / 91) + 1;
+	const suffix = quarter < 2 ? "03" : quarter < 3 ? "06" : quarter < 4 ? "09" : "12";
+	const currentRelease = quarter > 4.99 ? `${year + 1}-03` : `${year}-${suffix}`
+	return `${currentRelease}`;
+}
+
+function handleDocument(org, repo, branch, path, handler) {
+	const url = new URL(`https://api.github.com/repos/${org}/${repo}/contents/${path}?ref=${branch}`);
+	if (isLocalHost) {
+		const localURL = new URL(window.location);
+		localURL.hash = '';
+		localURL.search = '';
+		localURL.pathname = `${org}/${repo}/${branch}/${path}`;
+		fetch(localURL, { method: 'HEAD', cache: "no-store" }).then(response => {
+			if (response.status == 200 && response.headers.get('Server') == 'org.eclipse.oomph.internal.util.HTTPServer') {
+				handleDocumentURL(localURL, handler);
+			} else {
+				handleDocumentURL(url, handler);
+			}
+		});
+	} else {
+		handleDocumentURL(url, handler);
+	}
+}
+
+function handleDocumentURL(url, handler) {
+	fetch(url).then(response => {
+		return response.text();
+	}).then(text => {
+		const host = url.hostname;
+		let content = text;
+		if (host != 'localhost') {
+			const json = JSON.parse(text);
+			if (json.content) {
+				content = blobToText(json.content);
+			}
+		}
+		handler(content);
+	});
 }
 
 function blobToText(blob) {
