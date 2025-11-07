@@ -174,7 +174,6 @@
 		const branch = parts != null ? parts.groups.branch : 'main';
 		const path = parts != null ? parts.groups.path : dotGitHub == null ? file : `${dotGitHub.groups.root}/${dotGitHub.groups.path}`;
 
-		const isLocalHost = window.location.hostname == 'localhost';
 		const selfHosted = repo == 'simrel-website';
 		const repoName = dotGitHub == null ? 'SimRel' : 'SimRel Wiki';
 
@@ -220,9 +219,12 @@
 
 		function generateBreadcrumbDetails(path) {
 			const breadcrumb = document.querySelector(".breadcrumb");
-			if (path.startsWith('report/report.md')) {
-				document.title = `SimRel | Participants`;
-				breadcrumb.append(...toElements(`<li>Participants</li>`));
+			if (org == "eclipse-packaging") {
+				document.title = `SimRel | Eclipse Packaging`;
+				breadcrumb.append(...toElements(`<li>Eclipse Packaging</li>`));
+			} else if (path.startsWith('report/report.md')) {
+				document.title = `SimRel | Contributors`;
+				breadcrumb.append(...toElements(`<li>Contributors</li>`));
 			} else if (path.startsWith('wiki/Simultaneous_Release.md')) {
 				document.title = `SimRel | Schedule`;
 				breadcrumb.append(...toElements(`<li>Schedule</li>`));
@@ -232,6 +234,7 @@
 					const name = matchRelease.groups.name;
 					breadcrumb.append(...toElements(`<li><a href="${scriptBase}?file=wiki/Simultaneous_Release.md">Schedule</a></li> <li>${name}</li>`));
 					document.title = `SimRel | ${name}`;
+					generateParticipants(name);
 				} else {
 					const matchBasic = /^wiki\/SimRel\/(?<qualifier>Simultaneous_Release_Cycle_|Simultaneous_Release_|Contributing_to_Simrel_Aggregation_Build|Release_|)(?<name>.*).md$/.exec(path);
 					if (matchBasic != null) {
@@ -242,13 +245,25 @@
 					} else {
 						const participantMatch = /^wiki\/SimRel\/(?<name>.*)_participants.json$/.exec(path);
 						if (participantMatch != null) {
-							const name = `${participantMatch.groups.name} Participants`;
-							document.title = `SimRel | ${name}`;
-							breadcrumb.append(...toElements(`<li>${name}</li>`));
+							const name = participantMatch.groups.name;
+							document.title = `SimRel | ${name} Participants`;
+							breadcrumb.append(...toElements(`<li><a href="${scriptBase}?file=wiki/Simultaneous_Release.md">Schedule</a></li> <li><a href="${scriptBase}?file=wiki/SimRel/${name}.md">${name}</a></li> <li>Participants</li>`));
 						}
 					}
 				}
 			}
+		}
+
+		function generateParticipants(name) {
+			handleDocument('eclipse-simrel', '.github', 'main', `wiki/SimRel/${name}_participants.json`, content => {
+				if (!content.includes('"status":')) {
+					const element = document.getElementById('common-information');
+					if (element != null) {
+						const li = element.nextElementSibling.firstElementChild
+						li.parentNode.insertBefore(...toElements(`<li><a href="${scriptBase}?file=wiki/SimRel/${name}_participants.json">${name} partipating projects.</a></li>`), li);
+					}
+				}
+			});
 		}
 
 		function generateFileList(files) {
@@ -289,6 +304,8 @@
 # [${release}](${release}.md)
 
 ${projectList}
+
+# [${release} JSON](${release}_participants.json)
 
 <details>
 <summary>${release}_participants.json</summary>
