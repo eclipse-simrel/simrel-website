@@ -126,6 +126,18 @@
 			margin-bottom: 1em;
 		}
 
+		.zoom {
+			background-color: white;
+			transition: transform .2s;
+			max-width: 2.5em;
+			margin: .2em;
+		}
+
+		.zoom:hover {
+			transform: scale(2);
+			/* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+		}
+
 		/*]]>*/
 	</style>
 </head>
@@ -297,7 +309,7 @@
 			const projectList = Object.entries(projects).map(([key, value]) => {
 				const project_name = value.project_name;
 				const new_and_noteworthy_url = value.new_and_noteworthy_url;
-				const news = new_and_noteworthy_url == null ? '' : ` [&#128240;](${new_and_noteworthy_url})`;
+				const news = new_and_noteworthy_url == null ? '' : ` [**&#128240;**](${new_and_noteworthy_url})`;
 				return `1. [${project_name}](https://projects.eclipse.org/projects/${key})${news}`;
 			}).join('\n');
 			generateMarkdown(logicalBaseURL, `
@@ -315,6 +327,22 @@ ${response}
 ${"```"}
 </details>
 `)
+			const projectReferences = document.getElementById('markdown-target').querySelectorAll('a[href^="https://projects.eclipse.org/projects/"]');
+			for (const project of projectReferences) {
+				const projectId = project.href.toString().replace(/.*\//, '');
+				handleDocumentURL(new URL(`https://projects.eclipse.org/api/projects/${projectId.replace('.', '_')}`), content => {
+					const json = JSON.parse(content);
+					const projectJSON = json[0];
+					let projectLogo = 'https://projects.eclipse.org/modules/custom/eclipsefdn/eclipsefdn_projects/images/logos/default.png';
+					if (projectJSON != null) {
+						const logo = projectJSON.logo;
+						if (logo != null) {
+							projectLogo = logo;
+						}
+					}
+					project.parentElement.insertBefore(...toElements(`<span><img class="zoom" src="${projectLogo}"/>&nbsp;</span>`), project);
+				});
+			}
 		}
 
 		function generateMarkdown(logicalBaseURL, response) {
