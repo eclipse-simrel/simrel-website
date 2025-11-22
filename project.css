@@ -13,3 +13,129 @@
 #copyright {
 	padding-left: 0;
 }
+
+img {
+	max-width: 100%;
+}
+
+th,
+td {
+	border: 1px solid black;
+	padding: 0.2ex 1em;
+}
+
+th {
+	text-align: center;
+}
+
+td {
+	text-align: left;
+}
+
+tr:nth-child(2n) {
+	background-color: seashell;
+}
+
+li p {
+	margin: 0;
+}
+
+table {
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-bottom: 2ex;
+}
+
+#table-of-contents {
+	padding: 0;
+	margin: 0;
+	margin-left: 0.5em;
+}
+
+.tl1 {
+	margin-left: 0em;
+	font-size: 90%;
+}
+
+.tl2 {
+	margin-left: 0.5em;
+	font-size: 85%;
+}
+
+.tl3 {
+	margin-left: 1.0em;
+	font-size: 80%;
+}
+
+.tl4 {
+	margin-left: 1.5em;
+	font-size: 75%;
+}
+
+.tl5 {
+	margin-left: 2.0em;
+	font-size: 75%;
+}
+
+.tl6 {
+	margin-left: 2.5em;
+	font-size: 75%;
+}
+
+#toc {
+	float: right;
+	position: sticky;
+	top: 0;
+	margin-top: 1.5em;
+}
+
+#toc .sideitem {
+	padding: 0.5em 0.5em;
+	margin-bottom: 0;
+}
+
+#toc h2 {
+	margin-bottom: 0.5em;
+	padding-bottom: 0.0em;
+}
+
+#toc #table-of-contents {
+	max-height: 66vh;
+	overflow-y: auto;
+}
+
+details>summary {
+	margin-bottom: 0.5em;
+}
+
+details>summary::before {
+	content: '▷️ ';
+	color: orange;
+}
+
+details[open]>summary::before {
+	content: '◢ ';
+	color: orange;
+}
+
+:target {
+	border-style: solid;
+	border-width: 1px;
+}
+
+#edit-markdown-link {
+	display: block;
+	margin-bottom: 1em;
+}
+
+.zoom {
+	background-color: white;
+	transition: transform .2s;
+	max-width: 2.5em;
+	margin: .2em;
+}
+
+.zoom:hover {
+	transform: scale(2);
+	/* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
