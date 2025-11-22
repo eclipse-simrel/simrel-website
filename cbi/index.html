@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>CBI | Documentation</title>
+	<link rel="preconnect stylesheet" href="../project.css?v=1.0" />
+	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/marked-gfm-heading-id/lib/index.umd.js"></script>
+	<script>
+		const defaultMarkdown = 'eclipse-simrel/simrel-website/main/cbi/index.md';
+		const favicon = 'https://raw.githubusercontent.com/eclipse-cbi/p2repo-aggregator/main/cbi.svg';
+	</script>
+	<script src="../project.js?v=1.0"></script>
+	<style>
+		/* <![CDATA[*/
+		/*]]>*/
+	</style>
+</head>
+
+<body>
+	<div data-generate="generateDefaultBreadcrumb(this)">
+		<a href="/simrel/">SimRel</a>
+		<a href=".">CBI</a>
+	</div>
+
+	<div data-generate="generateDefaults(this)">
+	</div>
+
+	<main>
+		<div id="markdown-target"></div>
+	</main>
+
+	<script>
+		//<![CDATA[
+
+		navImage = 'https://raw.githubusercontent.com/eclipse-cbi/p2repo-aggregator/main/cbi.svg';
+		navLink = `${scriptBase}cbi`;
+
+		const downloads = {
+			'p2repo-sbom': 'https://download.eclipse.org/cbi/updates/p2-sbom/products/nightly/latest/',
+			'p2repo-aggregator': 'https://download.eclipse.org/cbi/updates/p2-aggregator/products/nightly/latest/',
+			'p2repo-analyzers': 'https://download.eclipse.org/cbi/updates/p2-analyzers/products/nightly/latest/',
+			'simrel-website': 'https://download.eclipse.org/cbi/',
+		};
+
+		const updates = {
+			'p2repo-sbom': 'https://download.eclipse.org/cbi/updates/p2-sbom/tools/nightly/latest/',
+			'p2repo-aggregator': 'https://download.eclipse.org/cbi/updates/p2-aggregator/tools/nightly/latest/',
+			'p2repo-analyzers': 'https://download.eclipse.org/cbi/updates/p2-analyzers/tools/nightly/latest/',
+			'simrel-website': 'https://download.eclipse.org/cbi/',
+		};
+
+		const issues = {
+			'p2repo-sbom': 'https://github.com/eclipse-cbi/p2repo-sbom/issues',
+			'p2repo-aggregator': 'https://github.com/eclipse-cbi/p2repo-aggregator/issues',
+			'p2repo-analyzers': 'https://github.com/eclipse-cbi/p2repo-analyzers/issues',
+		};
+
+		const projectNav = `
+<a class="fa-support" href="https://github.com/orgs/eclipse-simrel/discussions"
+	title="Support: Discussions">
+	Support<p>Discussions</p>
+</a>
+<a class="fa-bug" href="${issues[repo]}"
+	title="Issues: Bugs and Features">
+	Issues<p>Bugs and Features</p>
+</a>
+		`;
+
+		defaultNav = toElements(`
+<a class="fa-download" href="${downloads[repo]}"
+	title="Download: Eclipse IDE">
+	Download<p>Headless Product</p>
+</a>
+<a class="fa-refresh"  href="${updates[repo]}"
+	title="Update: Sites">
+	Updates<p>Sites</p>
+</a>
+${repo == 'simrel-website' ? '' : projectNav}
+		`);
+
+		defaultAside = toElements(`
+<a class="separator" href="https://projects.eclipse.org/projects/technology.cbi"><i class='fa fa-cube'></i> CBI Project</a>
+${cbiAsideProjects}
+<a class="separator" href="https://github.com/eclipse-cbi"><i class='fa fa fa-github'></i> GitHub</a>
+<a href="https://github.com/eclipse-cbi/p2repo-sbom">p2repo-sbom</a>
+<a href="https://github.com/eclipse-cbi/p2repo-aggregator">p2repo-aggregator</a>
+<a href="https://github.com/eclipse-cbi/p2repo-analyzers">p2repo-analyzers</a>
+`);
+
+		function generateBreadcrumbDetails(path) {
+			const breadcrumb = document.querySelector(".breadcrumb");
+			if (repo == 'p2repo-sbom') {
+				document.title = `CBI | SBOM`;
+				breadcrumb.append(...toElements(`<li>p2 SBOM</li>`));
+			} else if (repo == 'p2repo-aggregator') {
+				document.title = `CBI | Aggregator`;
+				breadcrumb.append(...toElements(`<li>p2 Aggregator</li>`));
+			} else if (repo == 'p2repo-analyzers') {
+				document.title = `CBI | Analyzers`;
+				breadcrumb.append(...toElements(`<li>p2 Analyzers</li>`));
+			} else if (repo == 'simrel-website') {
+				document.title = `CBI | Documentation`;
+			}
+		}
+
+		generate();
+
+		//]]>
+	</script>
+
+</body>
