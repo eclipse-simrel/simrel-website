@@ -523,7 +523,7 @@ function generateBreadcrumbDetails(path) {
 			const matchBasic = /^wiki\/SimRel\/(?<qualifier>Simultaneous_Release_Cycle_|Simultaneous_Release_|Contributing_to_Simrel_Aggregation_Build|Release_|)(?<name>.*).md$/.exec(path);
 			if (matchBasic != null) {
 				const name = niceName(matchBasic.groups.name);
-				const fixedName = name == '' ? 'Contibution' : name;
+				const fixedName = name == '' ? 'Contribution' : name;
 				breadcrumb.append(...toElements(`<li>${fixedName}</li>`));
 				document.title = `SimRel | ${fixedName}`;
 			} else {
@@ -691,6 +691,11 @@ ${headings.map(({ id, raw, level }) => `<li class="tl${level}"><a href="#${id}">
 				continue;
 			}
 
+			// News symbol &#128240;
+			if (a.textContent == '\uD83D\uDCF0') {
+				a.classList.add('news-link');
+			}
+
 			const logicalHref = new URL(href, logicalBaseURL);
 			if (logicalHref.pathname.endsWith('report.svg')) {
 				a.href = 'report/report.svg';
@@ -733,6 +738,7 @@ ${headings.map(({ id, raw, level }) => `<li class="tl${level}"><a href="#${id}">
 			document.location.hash = document.location.hash;
 		}
 
+		postProcessToc();
 		updateTocSize();
 	}
 }
@@ -766,6 +772,9 @@ function defaultHandler(url) {
 	});
 }
 
+function postProcessToc() {
+}
+
 function updateTocSize() {
 	const toc = document.getElementById('toc');
 	const tocInner = document.getElementById('table-of-contents');
@@ -775,7 +784,6 @@ function updateTocSize() {
 		toc.style.maxHeight = `${height - toc.getBoundingClientRect().top - 20}px`;
 	}
 }
-
 
 function getCurrentReleaseCycle() {
 	handleDocument('eclipse-simrel', 'simrel.build', 'main', 'simrel.aggr', content => {
