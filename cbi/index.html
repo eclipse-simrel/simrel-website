@@ -113,7 +113,7 @@ ${cbiAsideProjects}
 			for (const a of as) {
 				const match = /(?<option>-[^ ]+)( (?<argument>[^+]+)(?<repeat>[+]?))?$/.exec(a.textContent);
 				if (match != null) {
-					a.innerHTML = `<code>-${match.groups.option}</code>${match.groups.argument == null ? '' : ` <code>&lt;${match.groups.argument}&gt;</code>`}${match.groups.repeat == null ? '': '+'}`;
+					a.innerHTML = `<code>${match.groups.option}</code>${match.groups.argument == null ? '' : ` <code>&lt;${match.groups.argument}&gt;</code>`}${match.groups.repeat == null ? '': '+'}`;
 				}
 			}
 		}
