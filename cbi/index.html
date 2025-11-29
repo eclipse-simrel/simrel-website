@@ -90,11 +90,29 @@ ${cbiAsideProjects}
 <a href="https://github.com/eclipse-cbi/p2repo-analyzers">p2repo-analyzers</a>
 `);
 
-		function generateBreadcrumbDetails(path) {
+	function generateBreadcrumbDetails(path) {
 			const breadcrumb = document.querySelector(".breadcrumb");
 			if (repo == 'p2repo-sbom') {
-				document.title = `CBI | SBOM`;
-				breadcrumb.append(...toElements(`<li>p2 SBOM</li>`));
+				const base = `<li><a href="${scriptBase}cbi/?file=eclipse-cbi/p2repo-sbom/main/docs/index.md">p2 SBOM</a></li>`;
+				if (path == 'docs/overview.md') {
+					document.title = `CBI | SBOM Conceptual Overview`;
+					breadcrumb.append(...toElements(`${base}<li>Conceptual Overview</li>`));
+				} else if (path == 'docs/cli-guide.md') {
+					document.title = `CBI | SBOM Command Line Interface`
+					breadcrumb.append(...toElements(`${base}<li>Command Line Interface</li>`));
+				} else if (path == 'docs/ide-guide.md') {
+					document.title = `CBI | SBOM IDE Integration`
+					breadcrumb.append(...toElements(`${base}<li>IDE Integration</li>`));
+				} else if (path == 'docs/renderer-guide.md') {
+					document.title = `CBI | SBOM Web-based Renderer`
+					breadcrumb.append(...toElements(`${base}<li>Web-based Renderer</li>`));
+				} else if (path == 'docs/build-guide.md') {
+					document.title = `CBI | SBOM Maven/Jenkins Integration`
+					breadcrumb.append(...toElements(`${base}<li>Maven/Jenkins Integration</li>`));
+				} else {
+					document.title = `CBI | SBOM`;
+					breadcrumb.append(...toElements(`<li>p2 SBOM</li>`));
+				}
 			} else if (repo == 'p2repo-aggregator') {
 				document.title = `CBI | Aggregator`;
 				breadcrumb.append(...toElements(`<li>p2 Aggregator</li>`));
@@ -111,9 +129,9 @@ ${cbiAsideProjects}
 		function postProcessToc() {
 			const as = document.querySelectorAll('#toc-target a');
 			for (const a of as) {
-				const match = /(?<option>-[^ ]+)( (?<argument>[^+]+)(?<repeat>[+]?))?$/.exec(a.textContent);
+				const match = /^(?<option>-[^ ]+)( (?<argument>[^+]+)(?<repeat>[+]?))?$/.exec(a.textContent);
 				if (match != null) {
-					a.innerHTML = `<code>${match.groups.option}</code>${match.groups.argument == null ? '' : ` <code>&lt;${match.groups.argument}&gt;</code>`}${match.groups.repeat == null ? '': '+'}`;
+					a.innerHTML = `<code>${match.groups.option}</code>${match.groups.argument == null ? '' : ` <code>&lt;${match.groups.argument}&gt;</code>`}${match.groups.repeat == null ? '' : '+'}`;
 				}
 			}
 		}

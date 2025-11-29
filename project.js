@@ -73,11 +73,13 @@ let defaultNav = toElements(`
 
 let currentReleaseCycle = getCurrentReleaseCycle();
 
+const level1 = '&nbsp;&nbsp;&bullet;&nbsp';
+const level2 = '&nbsp;&nbsp;&nbsp;&nbsp;&bullet;&nbsp';
 let projectAside = `
 <a class="separator" href="https://projects.eclipse.org/projects/technology.simrel"><i class='fa fa-cube'></i> SimRel Project</a>
 <a href="${scriptBase}?file=wiki/Simultaneous_Release.md">Schedule</a>
-<a id="current-release-cycle" href="">&nbsp;&nbsp;&bullet;&nbsp;${currentReleaseCycle}</a>
-<a id="current-release-cycle-participants" href="">&nbsp;&nbsp;&nbsp;&nbsp;&bullet;&nbsp;Participants</a>
+<a id="current-release-cycle" href="">${level1}${currentReleaseCycle}</a>
+<a id="current-release-cycle-participants" href="">${level2}Participants</a>
 <a href="${scriptBase}?file=wiki/SimRel/Overview.md">Overview</a>
 <a href="${scriptBase}?file=wiki/SimRel/Simultaneous_Release_Requirements.md">Requirements</a>
 <a href="${scriptBase}?file=report/report.md">Contributor Report</a>
@@ -90,8 +92,18 @@ let githubAside = `
 <a href="https://github.com/eclipse-simrel/.github">Wiki</a>
 `;
 
+const sbomBase = `${scriptBase}cbi/?file=eclipse-cbi/p2repo-sbom/main/docs/`;
+const sbomAside = repo !== 'p2repo-sbom' ? '' : `
+<a href="${sbomBase}overview.md">${level1}Conceptual Overview</a>
+<a href="${sbomBase}cli-guide.md">${level1}Command Line Interface</a>
+<a href="${sbomBase}build-guide.md">${level1}Maven/Jenkins Integration</a>
+<a href="${sbomBase}ide-guide.md">${level1}IDE Integration</a>
+<a href="${sbomBase}renderer-guide.md">${level1}Web-based Renderer</a>
+`;
+
 let cbiAsideProjects = `
 <a href="${scriptBase}cbi/?file=eclipse-cbi/p2repo-sbom/main/docs/index.md">p2 SBOM</a>
+${sbomAside}
 <a href="${scriptBase}cbi/?file=eclipse-cbi/p2repo-aggregator/main/docs/user-guide.md">p2 Aggregator</a>
 <a href="${scriptBase}cbi/?file=eclipse-cbi/p2repo-analyzers/main/README.md">p2 Analyzers</a>
 `;
