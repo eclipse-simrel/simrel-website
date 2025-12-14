@@ -15,6 +15,10 @@
 	<script src="../project.js?v=1.0"></script>
 	<style>
 		/* <![CDATA[*/
+		.argument {
+			color: indigo;
+		}
+
 		/*]]>*/
 	</style>
 </head>
@@ -90,7 +94,7 @@ ${cbiAsideProjects}
 <a href="https://github.com/eclipse-cbi/p2repo-analyzers">p2repo-analyzers</a>
 `);
 
-	function generateBreadcrumbDetails(path) {
+		function generateBreadcrumbDetails(path) {
 			const breadcrumb = document.querySelector(".breadcrumb");
 			if (repo == 'p2repo-sbom') {
 				const base = `<li><a href="${scriptBase}cbi/?file=eclipse-cbi/p2repo-sbom/main/docs/index.md">p2 SBOM</a></li>`;
@@ -131,7 +135,13 @@ ${cbiAsideProjects}
 			for (const a of as) {
 				const match = /^(?<option>-[^ ]+)( (?<argument>[^+]+)(?<repeat>[+]?))?$/.exec(a.textContent);
 				if (match != null) {
-					a.innerHTML = `<code>${match.groups.option}</code>${match.groups.argument == null ? '' : ` <code>&lt;${match.groups.argument}&gt;</code>`}${match.groups.repeat == null ? '' : '+'}`;
+					a.innerHTML = `<code>${match.groups.option}</code>${match.groups.argument == null ? '' : ` <code class="argument">&lt;${match.groups.argument}&gt;</code>`}${match.groups.repeat == null ? '' : '+'}`;
+				}
+			}
+			const codes = document.querySelectorAll('code');
+			for (const code of codes) {
+				if (code.textContent.startsWith('<')) {
+					code.classList.add('argument');
 				}
 			}
 		}
