@@ -8,15 +8,46 @@
 	<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/marked-gfm-heading-id/lib/index.umd.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/marked-highlight/lib/index.umd.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/xml.min.js"></script>
 	<script>
 		const defaultMarkdown = 'eclipse-simrel/simrel-website/main/cbi/index.md';
 		const favicon = 'https://raw.githubusercontent.com/eclipse-cbi/p2repo-aggregator/main/cbi.svg';
+		marked.use(markedHighlight.markedHighlight({
+			emptyLangClass: 'hljs',
+			langPrefix: 'hljs language-',
+			highlight(code, lang, info) {
+				const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+				return hljs.highlight(code, {language}).value;
+			}
+		}));
 	</script>
 	<script src="../project.js?v=1.0"></script>
 	<style>
 		/* <![CDATA[*/
 		.argument {
 			color: indigo;
+		}
+
+		.language-xml {
+			color: darkgreen;
+		}
+
+		.language-xml .hljs-name {
+			color: indigo;
+		}
+
+		.language-xml .hljs-tag {
+			color: black;
+		}
+
+		.language-xml .hljs-attr {
+			color: teal;
+		}
+
+		.language-xml .hljs-string {
+			color: firebrick;
 		}
 
 		/*]]>*/
