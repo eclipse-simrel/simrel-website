@@ -498,15 +498,17 @@ function fixHash(hash) {
 }
 
 function toSiteURL(url) {
-	if (url.hostname == 'api.github.com' && url.pathname.startsWith('/repos/eclipse-simrel/simrel-website/contents')) {
-		const result = new URL(window.location);
-		result.pathname = url.pathname.replace(/\/repos\/eclipse-simrel\/simrel-website\/contents/, '/simrel')
-		result.hash = url.hash;
-		result.search = url.search;
-		return result;
-	} else {
-		return null;
+	if (url.hostname == 'api.github.com' && isLocalHost) {
+		const matchRepo = /\/repos\/(?<org>eclipse-[^/]+)\/(?<repo>[^/]+)\/contents\/(?<path>.*)/.exec(url.pathname);
+		if (matchRepo != null) {
+			const result = new URL(window.location);
+			result.pathname = `${matchRepo.groups.org}/${matchRepo.groups.repo}/main/${matchRepo.groups.path}`;
+			result.hash = url.hash;
+			result.search = url.search;
+			return result;
+		}
 	}
+	return null;
 }
 
 function generateBreadcrumbDetails(path) {
