@@ -3,75 +3,8 @@
 - org.eclipse.m2m.atl.engine.feature.group - `4.12.0.v202505101449`
   - org.antlr.runtime - `3.2.0.v20230929-1400`
 ## [Eclipse](report.md#-eclipse--8)
-- org.eclipse.core.runtime.feature.feature.group - `1.4.1100.v20251220-0953`
+- org.eclipse.e4.rcp.feature.group - `4.39.0.v20260102-1813`
   - org.osgi.service.prefs - `1.1.2.202109301733`
-- org.eclipse.e4.rcp.feature.group - `4.39.0.v20251220-0953`
-  - org.apache.felix.gogo.command - `1.1.2`
-  - org.apache.felix.gogo.runtime - `1.1.6`
-  - org.apache.felix.gogo.shell - `1.1.4`
-  - org.osgi.service.cm - `1.6.1.202109301733`
-  - org.osgi.service.component - `1.5.1.202212101352`
-  - org.osgi.service.device - `1.1.1.202109301733`
-  - org.osgi.service.event - `1.4.1.202109301733`
-  - org.osgi.service.metatype - `1.4.1.202109301733`
-  - org.osgi.service.prefs - `1.1.2.202109301733`
-  - org.osgi.service.provisioning - `1.2.0.201505202024`
-  - org.osgi.service.upnp - `1.2.1.202109301733`
-  - org.osgi.service.useradmin - `1.1.1.202109301733`
-  - org.osgi.service.wireadmin - `1.0.2.202109301733`
-  - org.osgi.util.function - `1.2.0.202109301733`
-  - org.osgi.util.measurement - `1.0.2.201802012109`
-  - org.osgi.util.position - `1.0.1.201505202026`
-  - org.osgi.util.promise - `1.3.0.202212101352`
-  - org.osgi.util.xml - `1.0.2.202109301733`
-- org.eclipse.equinox.compendium.sdk.feature.group - `3.23.900.v20251211-1038`
-  - org.osgi.service.coordinator - `1.0.2.201505202024`
-  - org.osgi.service.prefs - `1.1.2.202109301733`
-- org.eclipse.equinox.core.feature.feature.group - `1.15.800.v20251215-1416`
-  - org.apache.felix.gogo.command - `1.1.2`
-  - org.apache.felix.gogo.runtime - `1.1.6`
-  - org.apache.felix.gogo.shell - `1.1.4`
-  - org.osgi.service.cm - `1.6.1.202109301733`
-  - org.osgi.service.component - `1.5.1.202212101352`
-  - org.osgi.service.device - `1.1.1.202109301733`
-  - org.osgi.service.event - `1.4.1.202109301733`
-  - org.osgi.service.metatype - `1.4.1.202109301733`
-  - org.osgi.service.provisioning - `1.2.0.201505202024`
-  - org.osgi.service.upnp - `1.2.1.202109301733`
-  - org.osgi.service.useradmin - `1.1.1.202109301733`
-  - org.osgi.service.wireadmin - `1.0.2.202109301733`
-  - org.osgi.util.function - `1.2.0.202109301733`
-  - org.osgi.util.measurement - `1.0.2.201802012109`
-  - org.osgi.util.position - `1.0.1.201505202026`
-  - org.osgi.util.promise - `1.3.0.202212101352`
-  - org.osgi.util.xml - `1.0.2.202109301733`
-- org.eclipse.equinox.core.sdk.feature.group - `3.25.800.v20251215-1416`
-  - org.osgi.service.log.stream - `1.0.0.202109301733`
-  - org.osgi.util.pushstream - `1.1.0.202212101352`
-- org.eclipse.equinox.p2.core.feature.feature.group - `1.7.900.v20251124-1504`
-  - org.osgi.service.prefs - `1.1.2.202109301733`
-- org.eclipse.equinox.server.core.feature.group - `1.16.800.v20251215-1416`
-  - org.apache.felix.scr - `2.2.14`
-  - org.osgi.service.cm - `1.6.1.202109301733`
-  - org.osgi.service.component - `1.5.1.202212101352`
-  - org.osgi.service.device - `1.1.1.202109301733`
-  - org.osgi.service.event - `1.4.1.202109301733`
-  - org.osgi.service.metatype - `1.4.1.202109301733`
-  - org.osgi.service.provisioning - `1.2.0.201505202024`
-  - org.osgi.service.upnp - `1.2.1.202109301733`
-  - org.osgi.service.useradmin - `1.1.1.202109301733`
-  - org.osgi.service.wireadmin - `1.0.2.202109301733`
-  - org.osgi.util.function - `1.2.0.202109301733`
-  - org.osgi.util.measurement - `1.0.2.201802012109`
-  - org.osgi.util.position - `1.0.1.201505202026`
-  - org.osgi.util.promise - `1.3.0.202212101352`
-  - org.osgi.util.xml - `1.0.2.202109301733`
-- org.eclipse.equinox.server.p2.feature.group - `1.12.2000.v20251212-0036`
-  - org.sat4j.core - `2.3.6.v20201214`
-  - org.sat4j.pb - `2.3.6.v20201214`
-- org.eclipse.platform.feature.group - `4.39.0.v20251221-1800`
-  - com.jcraft.jsch - `0.1.55.v20230916-1400`
-  - org.apache.ant - `1.10.15.v20240901-1000`
 ## [EMF CDO](report.md#-emf-cdo--1)
 - org.eclipse.net4j.db.h2.feature.group - `4.26.0.v20251202-0847`
   - com.h2database - `2.4.240`
@@ -88,6 +21,16 @@
 ## [RAP Tools](report.md#-rap-tools)
 - org.eclipse.rap.tools.feature.feature.group - `4.5.0.20251203-1200`
   - jakarta.servlet-api - `6.1.0`
+  - org.eclipse.jetty.ee.webapp - `12.1.4`
+  - org.eclipse.jetty.ee10.servlet - `12.1.4`
+  - org.eclipse.jetty.ee10.webapp - `12.1.4`
+  - org.eclipse.jetty.http - `12.1.4`
+  - org.eclipse.jetty.io - `12.1.4`
+  - org.eclipse.jetty.security - `12.1.4`
+  - org.eclipse.jetty.server - `12.1.4`
+  - org.eclipse.jetty.util - `12.1.4`
+  - org.eclipse.jetty.util.ajax - `12.1.4`
+  - org.eclipse.jetty.xml - `12.1.4`
   - slf4j.api - `2.0.17`
 ## [TM: RSE](report.md#-tm-rse--1)
 - org.eclipse.rse.ftp.feature.group - `4.5.700.202408061246`
