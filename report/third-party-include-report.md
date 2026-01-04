@@ -2,9 +2,6 @@
 ## [ATL](report.md#-atl)
 - org.eclipse.m2m.atl.engine.feature.group - `4.12.0.v202505101449`
   - org.antlr.runtime - `3.2.0.v20230929-1400`
-## [Eclipse](report.md#-eclipse--8)
-- org.eclipse.e4.rcp.feature.group - `4.39.0.v20260102-1813`
-  - org.osgi.service.prefs - `1.1.2.202109301733`
 ## [EMF CDO](report.md#-emf-cdo--1)
 - org.eclipse.net4j.db.h2.feature.group - `4.26.0.v20251202-0847`
   - com.h2database - `2.4.240`
