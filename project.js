@@ -516,10 +516,11 @@ function generateBreadcrumbDetails(path) {
 	const breadcrumb = document.querySelector(".breadcrumb");
 	if (org == "eclipse-packaging") {
 		document.title = `SimRel | Eclipse Packaging`;
-		breadcrumb.append(...toElements(`<li>Eclipse Packaging</li>`));
+		breadcrumb.append(...toElements(`<li><a href="${scriptBase}?file=eclipse-packaging/packages/master/README.md">Eclipse Packaging</a></li>`));
 		const headerNavImg = document.getElementById('header-nav-img');
 		if (headerNavImg != null) {
 			headerNavImg.src = 'https://raw.githubusercontent.com/eclipse-packaging/.github/refs/heads/main/assets/artwork/svg/EPP-Color-Vertical.svg';
+			headerNavImg.parentElement.href = `${scriptBase}?file=eclipse-packaging/packages/master/README.md`;
 		}
 	} else if (path.startsWith('report/report.md')) {
 		document.title = `SimRel | Contributors`;
