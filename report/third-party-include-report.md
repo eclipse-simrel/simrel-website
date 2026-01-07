@@ -7,14 +7,6 @@
   - com.h2database - `2.4.240`
 - org.eclipse.net4j.util.feature.group - `4.29.0.v20251117-1051`
   - org.apache.commons.commons-logging - `1.3.5`
-## [OCL](report.md#-ocl--1)
-- org.eclipse.ocl.tools.feature.group - `3.22.0.v20240902-1518`
-  - lpg.runtime.java - `2.0.17.v201004271640`
-## [Passage](report.md#-passage--1)
-- org.eclipse.passage.lic.oshi.feature.feature.group - `4.4.0.v20251130-1923`
-  - com.github.oshi.oshi-core - `6.9.1`
-  - com.sun.jna - `5.18.1.v20251001-0800`
-  - com.sun.jna.platform - `5.18.1`
 ## [RAP Tools](report.md#-rap-tools)
 - org.eclipse.rap.tools.feature.feature.group - `4.5.0.20251203-1200`
   - jakarta.servlet-api - `6.1.0`
@@ -60,7 +52,7 @@
   - com.google.javascript - `0.0.20160315.v20161124-1903`
   - com.google.protobuf - `2.4.0.v201105131100`
   - org.mozilla.javascript - `1.7.10.v20190430-1943`
-- org.eclipse.wst.xml_core.feature.feature.group - `3.40.0.v202510300114`
+- org.eclipse.wst.xml_core.feature.feature.group - `3.41.0.v202601060332`
   - org.apache.xerces - `2.12.2.v20230928-1306`
   - org.apache.xml.resolver - `1.2.0.v20230928-1222`
   - org.apache.xml.serializer - `2.7.1.v201005080400`
