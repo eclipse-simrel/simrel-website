@@ -2,11 +2,6 @@
 ## [ATL](report.md#-atl)
 - org.eclipse.m2m.atl.engine.feature.group - `4.12.0.v202505101449`
   - org.antlr.runtime - `3.2.0.v20230929-1400`
-## [EMF CDO](report.md#-emf-cdo--1)
-- org.eclipse.net4j.db.h2.feature.group - `4.26.0.v20251202-0847`
-  - com.h2database - `2.4.240`
-- org.eclipse.net4j.util.feature.group - `4.29.0.v20251117-1051`
-  - org.apache.commons.commons-logging - `1.3.5`
 ## [TM: RSE](report.md#-tm-rse--1)
 - org.eclipse.rse.ftp.feature.group - `4.5.700.202408061246`
   - org.apache.commons.commons-net - `3.11.1`
