@@ -2,6 +2,9 @@
 ## [ATL](report.md#-atl)
 - org.eclipse.m2m.atl.engine.feature.group - `4.12.0.v202505101449`
   - org.antlr.runtime - `3.2.0.v20230929-1400`
+## [ECF](report.md#-ecf--3)
+- org.eclipse.ecf.remoteservice.servlet.feature.feature.group - `1.1.0.v20241230-2245`
+  - jakarta.servlet-api - `6.1.0`
 ## [TM: RSE](report.md#-tm-rse--1)
 - org.eclipse.rse.ftp.feature.group - `4.5.700.202408061246`
   - org.apache.commons.commons-net - `3.11.1`
