@@ -5,11 +5,6 @@
 ## [ECF](report.md#-ecf--3)
 - org.eclipse.ecf.remoteservice.servlet.feature.feature.group - `1.1.0.v20241230-2245`
   - jakarta.servlet-api - `6.1.0`
-## [TM: RSE](report.md#-tm-rse--1)
-- org.eclipse.rse.ftp.feature.group - `4.5.700.202408061246`
-  - org.apache.commons.commons-net - `3.11.1`
-- org.eclipse.rse.telnet.feature.group - `4.5.700.202408061246`
-  - org.apache.commons.commons-net - `3.11.1`
 ## [Web Tools Platform](report.md#-web-tools-platform--2)
 - org.eclipse.jpt.jpa.feature.feature.group - `3.8.100.v202511170155`
   - jakarta.persistence-api - `2.2.3`
@@ -41,7 +36,7 @@
   - org.apache.xml.resolver - `1.2.0.v20230928-1222`
   - org.apache.xml.serializer - `2.7.1.v201005080400`
 ## [Xtext, Xtend](report.md#-xtext-xtend--3)
-- org.eclipse.xtext.redist.feature.group - `2.41.0.v20251124-0739`
+- org.eclipse.xtext.redist.feature.group - `2.42.0.v20260202-1259`
   - org.antlr.runtime - `3.2.0.v20230929-1400`
-- org.eclipse.xtext.runtime.feature.group - `2.41.0.v20251124-0739`
+- org.eclipse.xtext.runtime.feature.group - `2.42.0.v20260202-1259`
   - org.antlr.runtime - `3.2.0.v20230929-1400`
