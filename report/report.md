@@ -10,7 +10,7 @@ This report was generated 2026-03-24.
     - ![](report-a693330d43c5517d.png) [justj - https://github.com/eclipse-justj](https://github.com/eclipse-justj/justj) - 11
     - ![](report-a693330d43c5517d.png) [justj.tools - https://github.com/eclipse-justj](https://github.com/eclipse-justj/justj.tools) - 5
 
-- ![](report-e31c5e0cd95f2614.png) [Eclipse Packaging Project](https://projects.eclipse.org/projects/technology.packaging) ⭐ 5 [4.39.0](https://projects.eclipse.org/projects/technology.packaging/releases/4.39.0) 2026-03-11 [&#128240;](https://github.com/eclipse-packaging/packages/blob/master/CHANGELOG.md)
+- ![](report-e31c5e0cd95f2614.png) [Eclipse Packaging Project](https://projects.eclipse.org/projects/technology.packaging) ⭐ 5 [4.40.0](https://projects.eclipse.org/projects/technology.packaging/releases/4.40.0) 2026-06-10 [&#128240;](https://github.com/eclipse-packaging/packages/blob/master/CHANGELOG.md)
     - ![](report-a693330d43c5517d.png) [packages - https://github.com/eclipse-packaging](https://github.com/eclipse-packaging/packages) - 13
 
 - ![](report-e31c5e0cd95f2614.png) [Eclipse SimRel](https://projects.eclipse.org/projects/technology.simrel) ⭐ 8
@@ -28,18 +28,18 @@ This report was generated 2026-03-24.
 ---
 ## ![](report-9fbfe55416c37ba3.png) Eclipse ⭐ 8
 - ![](report-e31c5e0cd95f2614.png) [Eclipse Project](https://projects.eclipse.org/projects/eclipse) [4.36](https://projects.eclipse.org/projects/eclipse/releases/4.36) 2025-06-11
-    - ![](report-e31c5e0cd95f2614.png) [Eclipse Equinox](https://projects.eclipse.org/projects/eclipse.equinox) ⭐ 7 [&#128240;](https://eclipse.dev/eclipse/news/4.39/platform_isv.html)
+    - ![](report-e31c5e0cd95f2614.png) [Eclipse Equinox](https://projects.eclipse.org/projects/eclipse.equinox) ⭐ 7 [&#128240;](https://eclipse.dev/eclipse/news/4.40/platform_isv.html)
         - ![](report-a693330d43c5517d.png) [equinox - https://github.com/eclipse-equinox](https://github.com/eclipse-equinox/equinox) - 1
         - ![](report-a693330d43c5517d.png) [equinox.binaries - https://github.com/eclipse-equinox](https://github.com/eclipse-equinox/equinox.binaries) - 62
         - ![](report-a693330d43c5517d.png) [p2 - https://github.com/eclipse-equinox](https://github.com/eclipse-equinox/p2) - 5
-    - ![](report-e31c5e0cd95f2614.png) [Eclipse JDT (Java development tools)](https://projects.eclipse.org/projects/eclipse.jdt) ⭐ 7 [&#128240;](https://eclipse.dev/eclipse/news/4.39/jdt.html)
+    - ![](report-e31c5e0cd95f2614.png) [Eclipse JDT (Java development tools)](https://projects.eclipse.org/projects/eclipse.jdt) ⭐ 7 [&#128240;](https://eclipse.dev/eclipse/news/4.40/jdt.html)
         - ![](report-a693330d43c5517d.png) [eclipse.jdt - https://github.com/eclipse-jdt](https://github.com/eclipse-jdt/eclipse.jdt) - 25
         - ![](report-a693330d43c5517d.png) [eclipse.jdt.core - https://github.com/eclipse-jdt](https://github.com/eclipse-jdt/eclipse.jdt.core) - 4
         - ![](report-a693330d43c5517d.png) [eclipse.jdt.debug - https://github.com/eclipse-jdt](https://github.com/eclipse-jdt/eclipse.jdt.debug) - 5
         - ![](report-a693330d43c5517d.png) [eclipse.jdt.ui - https://github.com/eclipse-jdt](https://github.com/eclipse-jdt/eclipse.jdt.ui) - 0
-    - ![](report-e31c5e0cd95f2614.png) [Eclipse PDE](https://projects.eclipse.org/projects/eclipse.pde) ⭐ 8 [&#128240;](https://eclipse.dev/eclipse/news/4.39/pde.html)
+    - ![](report-e31c5e0cd95f2614.png) [Eclipse PDE](https://projects.eclipse.org/projects/eclipse.pde) ⭐ 8 [&#128240;](https://eclipse.dev/eclipse/news/4.40/pde.html)
         - ![](report-a693330d43c5517d.png) [eclipse.pde - https://github.com/eclipse-pde](https://github.com/eclipse-pde/eclipse.pde) - 0
-    - ![](report-e31c5e0cd95f2614.png) [Eclipse Platform](https://projects.eclipse.org/projects/eclipse.platform) ⭐ 8 [&#128240;](https://eclipse.dev/eclipse/news/4.39/platform.html)
+    - ![](report-e31c5e0cd95f2614.png) [Eclipse Platform](https://projects.eclipse.org/projects/eclipse.platform) ⭐ 8 [&#128240;](https://eclipse.dev/eclipse/news/4.40/platform.html)
         - ![](report-a693330d43c5517d.png) [eclipse.platform - https://github.com/eclipse-platform](https://github.com/eclipse-platform/eclipse.platform) - 3
         - ![](report-a693330d43c5517d.png) [eclipse.platform.releng.aggregator - https://github.com/eclipse-platform](https://github.com/eclipse-platform/eclipse.platform.releng.aggregator) - 0
         - ![](report-a693330d43c5517d.png) [eclipse.platform.swt - https://github.com/eclipse-platform](https://github.com/eclipse-platform/eclipse.platform.swt) - 7
@@ -47,7 +47,7 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/ep.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/ep.aggrcon) - 13
-   - ![](report-3873a92b2c13784f.png) [eclipse/updates/4.40-I-builds/I20260310-1800 - https://download.eclipse.org/](https://download.eclipse.org/eclipse/updates/4.40-I-builds/I20260310-1800) - 13
+   - ![](report-3873a92b2c13784f.png) [eclipse/updates/4.40-I-builds/I20260323-1800 - https://download.eclipse.org/](https://download.eclipse.org/eclipse/updates/4.40-I-builds/I20260323-1800) - 1
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) EGit ⭐ 7
@@ -60,7 +60,7 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/egit.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/egit.aggrcon) - 21
-   - ![](report-3873a92b2c13784f.png) [egit/updates-7.6 - https://download.eclipse.org/](https://download.eclipse.org/egit/updates-7.6) - 21
+   - ![](report-3873a92b2c13784f.png) [egit/updates-7.6 - https://download.eclipse.org/](https://download.eclipse.org/egit/updates-7.6) - 22
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) EMF (Core) ⭐ 6
@@ -69,7 +69,7 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/emf-emf.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/emf-emf.aggrcon) - 28
-   - ![](report-3873a92b2c13784f.png) [modeling/emf/emf/builds/release/2.45.0 - https://download.eclipse.org/](https://download.eclipse.org/modeling/emf/emf/builds/release/2.45.0) - 28
+   - ![](report-3873a92b2c13784f.png) [modeling/emf/emf/builds/release/2.45.0 - https://download.eclipse.org/](https://download.eclipse.org/modeling/emf/emf/builds/release/2.45.0) - 56
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) LSP4E ⭐ 6
@@ -83,11 +83,11 @@ This report was generated 2026-03-24.
 ---
 ## ![](report-9fbfe55416c37ba3.png) Oomph ⭐ 6
 - ![](report-e31c5e0cd95f2614.png) [Eclipse Oomph](https://projects.eclipse.org/projects/tools.oomph) ⭐ 6 [1.38.0](https://projects.eclipse.org/projects/tools.oomph/releases/1.38.0) 2025-09-10
-    - ![](report-a693330d43c5517d.png) [oomph - https://github.com/eclipse-oomph](https://github.com/eclipse-oomph/oomph) - 6
+    - ![](report-a693330d43c5517d.png) [oomph - https://github.com/eclipse-oomph](https://github.com/eclipse-oomph/oomph) - 7
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/oomph.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/oomph.aggrcon) - 20
-   - ![](report-3873a92b2c13784f.png) [oomph/drops/release/1.40.0 - https://download.eclipse.org/](https://download.eclipse.org/oomph/drops/release/1.40.0) - 20
+   - ![](report-3873a92b2c13784f.png) [oomph/drops/release/1.40.0 - https://download.eclipse.org/](https://download.eclipse.org/oomph/drops/release/1.40.0) - 40
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) EPP Marketplace Client ⭐ 5
@@ -96,7 +96,7 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/epp-mpc.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/epp-mpc.aggrcon) - 215
-   - ![](report-3873a92b2c13784f.png) [mpc/drops/1.13.0/v20250816-1241 - https://download.eclipse.org/](https://download.eclipse.org/mpc/drops/1.13.0/v20250816-1241) - 215
+   - ![](report-3873a92b2c13784f.png) [mpc/drops/1.13.0/v20250816-1241 - https://download.eclipse.org/](https://download.eclipse.org/mpc/drops/1.13.0/v20250816-1241) - 220
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) LSP4J ⭐ 5
@@ -118,8 +118,8 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/m2e.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/m2e.aggrcon) - 20
-   - ![](report-3873a92b2c13784f.png) [technology/m2e/releases/2.11.0 - https://download.eclipse.org/](https://download.eclipse.org/technology/m2e/releases/2.11.0) - 20
-   - ![](report-3873a92b2c13784f.png) [technology/m2e/m2e-wtp/releases/1.6.1 - https://download.eclipse.org/](https://download.eclipse.org/technology/m2e/m2e-wtp/releases/1.6.1) - 875
+   - ![](report-3873a92b2c13784f.png) [technology/m2e/releases/2.11.0 - https://download.eclipse.org/](https://download.eclipse.org/technology/m2e/releases/2.11.0) - 47
+   - ![](report-3873a92b2c13784f.png) [technology/m2e/m2e-wtp/releases/1.6.1 - https://download.eclipse.org/](https://download.eclipse.org/technology/m2e/m2e-wtp/releases/1.6.1) - 882
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) Ecore Tools ⭐ 4
@@ -158,7 +158,7 @@ This report was generated 2026-03-24.
     - ![](report-a693330d43c5517d.png) [homebrew-tools - https://github.com/eclipse-cdt](https://github.com/eclipse-cdt/homebrew-tools) - 119
 
 ---
- - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/cdt.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/cdt.aggrcon) - 19
+ - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/cdt.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/cdt.aggrcon) - 20
    - ![](report-3873a92b2c13784f.png) [tools/cdt/releases/12.4/cdt-12.4.0 - https://download.eclipse.org/](https://download.eclipse.org/tools/cdt/releases/12.4/cdt-12.4.0) - 20
    - ![](report-3873a92b2c13784f.png) [tools/cdt/releases/cdt-lsp-3.5/cdt-lsp-3.5.0 - https://download.eclipse.org/](https://download.eclipse.org/tools/cdt/releases/cdt-lsp-3.5/cdt-lsp-3.5.0) - 20
 
@@ -169,7 +169,7 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/ecf.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/ecf.aggrcon) - 190
-   - ![](report-3873a92b2c13784f.png) [rt/ecf/3.16.5/site.p2/3.16.5.v20250914-0333 - https://download.eclipse.org/](https://download.eclipse.org/rt/ecf/3.16.5/site.p2/3.16.5.v20250914-0333) - 190
+   - ![](report-3873a92b2c13784f.png) [rt/ecf/3.16.5/site.p2/3.16.5.v20250914-0333 - https://download.eclipse.org/](https://download.eclipse.org/rt/ecf/3.16.5/site.p2/3.16.5.v20250914-0333) - 191
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) Embedded CDT ⭐ 3
@@ -177,7 +177,7 @@ This report was generated 2026-03-24.
     - ![](report-a693330d43c5517d.png) [eclipse-plugins - https://github.com/eclipse-embed-cdt](https://github.com/eclipse-embed-cdt/eclipse-plugins) - 20
 
 ---
- - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/embedcdt.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/embedcdt.aggrcon) - 19
+ - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/embedcdt.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/embedcdt.aggrcon) - 20
    - ![](report-3873a92b2c13784f.png) [embed-cdt/releases/6.7.0/p2 - https://download.eclipse.org/](https://download.eclipse.org/embed-cdt/releases/6.7.0/p2) - 27
 
 ---
@@ -187,11 +187,11 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/gef.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/gef.aggrcon) - 21
-   - ![](report-3873a92b2c13784f.png) [tools/gef/classic/release/3.27.0 - https://download.eclipse.org/](https://download.eclipse.org/tools/gef/classic/release/3.27.0) - 21
+   - ![](report-3873a92b2c13784f.png) [tools/gef/classic/release/3.27.0 - https://download.eclipse.org/](https://download.eclipse.org/tools/gef/classic/release/3.27.0) - 29
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) GMF Runtime ⭐ 3
-- ![](report-e31c5e0cd95f2614.png) [Eclipse GMF Runtime](https://projects.eclipse.org/projects/modeling.gmf-runtime) ⭐ 3 [1.16.8](https://projects.eclipse.org/projects/modeling.gmf-runtime/releases/1.16.8) 2025-12-01 [&#128240;](https://github.com/eclipse-gmf-runtime/gmf-runtime/releases/latest)
+- ![](report-e31c5e0cd95f2614.png) [Eclipse GMF Runtime](https://projects.eclipse.org/projects/modeling.gmf-runtime) ⭐ 3 [1.16.8](https://projects.eclipse.org/projects/modeling.gmf-runtime/releases/1.16.8) 2025-12-01
     - ![](report-a693330d43c5517d.png) [gmf-notation - https://github.com/eclipse-gmf-runtime](https://github.com/eclipse-gmf-runtime/gmf-notation) - 577
     - ![](report-a693330d43c5517d.png) [gmf-runtime - https://github.com/eclipse-gmf-runtime](https://github.com/eclipse-gmf-runtime/gmf-runtime) - 103
 
@@ -202,12 +202,12 @@ This report was generated 2026-03-24.
 
 ---
 ## ![](report-419824ab8b1d6a04.png) Nebula ⭐ 3
-- ![](report-e31c5e0cd95f2614.png) [Eclipse Nebula - Supplemental Widgets for SWT](https://projects.eclipse.org/projects/technology.nebula) ⭐ 3 [3.3.0](https://projects.eclipse.org/projects/technology.nebula/releases/3.3.0) 2025-12-12 [&#128240;](https://github.com/EclipseNebula/nebula/releases/latest)
+- ![](report-e31c5e0cd95f2614.png) [Eclipse Nebula - Supplemental Widgets for SWT](https://projects.eclipse.org/projects/technology.nebula) ⭐ 3 [3.4.0](https://projects.eclipse.org/projects/technology.nebula/releases/3.4.0) 2026-06-10 [&#128240;](https://github.com/EclipseNebula/nebula/releases/latest)
     - ![](report-a693330d43c5517d.png) [nebula - https://github.com/EclipseNebula](https://github.com/EclipseNebula/nebula) - 15
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) Wild Web Developer ⭐ 3
-- ![](report-e31c5e0cd95f2614.png) [Eclipse Wild Web Developer](https://projects.eclipse.org/projects/tools.wildwebdeveloper) ⭐ 3 [1.4.0](https://projects.eclipse.org/projects/tools.wildwebdeveloper/releases/1.4.0) 2025-11-28 [&#128240;](https://github.com/eclipse-wildwebdeveloper/wildwebdeveloper/releases/latest)
+- ![](report-e31c5e0cd95f2614.png) [Eclipse Wild Web Developer](https://projects.eclipse.org/projects/tools.wildwebdeveloper) ⭐ 3 [1.4.0](https://projects.eclipse.org/projects/tools.wildwebdeveloper/releases/1.4.0) 2025-11-28
     - ![](report-a693330d43c5517d.png) [wildwebdeveloper - https://github.com/eclipse-wildwebdeveloper](https://github.com/eclipse-wildwebdeveloper/wildwebdeveloper) - 4
 
 ---
@@ -216,7 +216,7 @@ This report was generated 2026-03-24.
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) Xtext, Xtend ⭐ 3
-- ![](report-e31c5e0cd95f2614.png) [Eclipse Xtext](https://projects.eclipse.org/projects/modeling.xtext) ⭐ 3 [2.42.0](https://projects.eclipse.org/projects/modeling.xtext/releases/2.42.0) 2026-02-23
+- ![](report-e31c5e0cd95f2614.png) [Eclipse Xtext](https://projects.eclipse.org/projects/modeling.xtext) ⭐ 3 [2.43.0](https://projects.eclipse.org/projects/modeling.xtext/releases/2.43.0) 2026-05-25
     - ![](report-a693330d43c5517d.png) [xtext - https://github.com/eclipse-xtext](https://github.com/eclipse-xtext/xtext) - 2
 
 ---
@@ -230,7 +230,7 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/mylyn.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/mylyn.aggrcon) - 20
-   - ![](report-3873a92b2c13784f.png) [mylyn/updates/release/4.10.0 - https://download.eclipse.org/](https://download.eclipse.org/mylyn/updates/release/4.10.0) - 20
+   - ![](report-3873a92b2c13784f.png) [mylyn/updates/release/4.10.0 - https://download.eclipse.org/](https://download.eclipse.org/mylyn/updates/release/4.10.0) - 77
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) TM4E ⭐ 2
@@ -239,16 +239,16 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/tm4e.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/tm4e.aggrcon) - 22
-   - ![](report-3873a92b2c13784f.png) [tm4e/releases/0.17.2 - https://download.eclipse.org/](https://download.eclipse.org/tm4e/releases/0.17.2) - 22
+   - ![](report-3873a92b2c13784f.png) [tm4e/releases/0.17.2 - https://download.eclipse.org/](https://download.eclipse.org/tm4e/releases/0.17.2) - 47
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) Web Tools Platform ⭐ 2
 - ![](report-e31c5e0cd95f2614.png) [Eclipse Web Tools Platform Project](https://projects.eclipse.org/projects/webtools) ⭐ 1 [3.41](https://projects.eclipse.org/projects/webtools/releases/3.41) 2026-03-11
-    - ![](report-e31c5e0cd95f2614.png) [Eclipse Web Tools Common](https://projects.eclipse.org/projects/webtools.common) ⭐ 1 [&#128240;](https://github.com/eclipse-wtp-common/webtools.common/releases/latest)
+    - ![](report-e31c5e0cd95f2614.png) [Eclipse Web Tools Common](https://projects.eclipse.org/projects/webtools.common) ⭐ 1
         - ![](report-a693330d43c5517d.png) [webtools.common - https://github.com/eclipse-wtp-common](https://github.com/eclipse-wtp-common/webtools.common) - 77
-    - ![](report-e31c5e0cd95f2614.png) [Eclipse Dali Java Persistence Tools](https://projects.eclipse.org/projects/webtools.dali) [&#128240;](https://github.com/eclipse-dali/webtools.dali/releases/latest)
+    - ![](report-e31c5e0cd95f2614.png) [Eclipse Dali Java Persistence Tools](https://projects.eclipse.org/projects/webtools.dali)
         - ![](report-a693330d43c5517d.png) [webtools.dali - https://github.com/eclipse-dali](https://github.com/eclipse-dali/webtools.dali) - 3
-    - ![](report-e31c5e0cd95f2614.png) [Eclipse Tools for Java EE](https://projects.eclipse.org/projects/webtools.jeetools) ⭐ 1 [&#128240;](https://github.com/eclipse-jeetools/webtools.javaee/releases/latest)
+    - ![](report-e31c5e0cd95f2614.png) [Eclipse Tools for Java EE](https://projects.eclipse.org/projects/webtools.jeetools) ⭐ 1
         - ![](report-a693330d43c5517d.png) [webtools.javaee - https://github.com/eclipse-jeetools](https://github.com/eclipse-jeetools/webtools.javaee) - 188
     - ![](report-e31c5e0cd95f2614.png) [Eclipse JavaScript Development Tools](https://projects.eclipse.org/projects/webtools.jsdt) ⭐ 1
         - ![](report-a693330d43c5517d.png) [webtools.jsdt - https://github.com/eclipse-jsdt](https://github.com/eclipse-jsdt/webtools.jsdt) - 324
@@ -256,14 +256,14 @@ This report was generated 2026-03-24.
         - ![](report-a693330d43c5517d.png) [webtools.jsf - https://github.com/eclipse-jsf](https://github.com/eclipse-jsf/webtools.jsf) - 351
     - ![](report-e31c5e0cd95f2614.png) [Eclipse Server Tools](https://projects.eclipse.org/projects/webtools.servertools)
         - ![](report-a693330d43c5517d.png) [servertools - https://github.com/eclipse-servertools](https://github.com/eclipse-servertools/servertools) - 205
-    - ![](report-e31c5e0cd95f2614.png) [Eclipse WTP Source Editing](https://projects.eclipse.org/projects/webtools.sourceediting) [&#128240;](https://github.com/eclipse-sourceediting/sourceediting/releases/latest)
+    - ![](report-e31c5e0cd95f2614.png) [Eclipse WTP Source Editing](https://projects.eclipse.org/projects/webtools.sourceediting)
         - ![](report-a693330d43c5517d.png) [sourceediting - https://github.com/eclipse-sourceediting](https://github.com/eclipse-sourceediting/sourceediting) - 77
-    - ![](report-e31c5e0cd95f2614.png) [Eclipse Web Services Tools](https://projects.eclipse.org/projects/webtools.webservices) ⭐ 2 [&#128240;](https://github.com/eclipse-webservices/webservices/releases/latest)
+    - ![](report-e31c5e0cd95f2614.png) [Eclipse Web Services Tools](https://projects.eclipse.org/projects/webtools.webservices) ⭐ 2
         - ![](report-a693330d43c5517d.png) [webservices - https://github.com/eclipse-webservices](https://github.com/eclipse-webservices/webservices) - 77
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/webtools.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/webtools.aggrcon) - 20
-   - ![](report-3873a92b2c13784f.png) [webtools/downloads/drops/R3.41.0/S-3.41RC1-20260225091541/repository - https://download.eclipse.org/](https://download.eclipse.org/webtools/downloads/drops/R3.41.0/S-3.41RC1-20260225091541/repository) - 27
+   - ![](report-3873a92b2c13784f.png) [webtools/downloads/drops/R3.41.0/S-3.41RC1-20260225091541/repository - https://download.eclipse.org/](https://download.eclipse.org/webtools/downloads/drops/R3.41.0/S-3.41RC1-20260225091541/repository) - 77
    - ![](report-3873a92b2c13784f.png) [webtools/downloads/drops/R3.2/C3.2.0/I-C3.2.0-20100614204142/repository - https://archive.eclipse.org/](https://archive.eclipse.org/webtools/downloads/drops/R3.2/C3.2.0/I-C3.2.0-20100614204142/repository) - 5761
    - ![](report-3873a92b2c13784f.png) [oomph/simrel-extras/release/1.3.0 - https://download.eclipse.org/](https://download.eclipse.org/oomph/simrel-extras/release/1.3.0) - 20
 
@@ -274,7 +274,7 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/windowbuilder.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/windowbuilder.aggrcon) - 12
-   - ![](report-3873a92b2c13784f.png) [windowbuilder/updates/release/1.23.0 - https://download.eclipse.org/](https://download.eclipse.org/windowbuilder/updates/release/1.23.0) - 12
+   - ![](report-3873a92b2c13784f.png) [windowbuilder/updates/release/1.23.0 - https://download.eclipse.org/](https://download.eclipse.org/windowbuilder/updates/release/1.23.0) - 36
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) Buildship ⭐ 1
@@ -319,12 +319,12 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/linuxtools.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/linuxtools.aggrcon) - 20
-   - ![](report-3873a92b2c13784f.png) [linuxtools/update-2026-03-rc2 - https://download.eclipse.org/](https://download.eclipse.org/linuxtools/update-2026-03-rc2) - 20
-   - ![](report-3873a92b2c13784f.png) [linuxtools/update-2026-03-docker-rc2 - https://download.eclipse.org/](https://download.eclipse.org/linuxtools/update-2026-03-docker-rc2) - 20
+   - ![](report-3873a92b2c13784f.png) [linuxtools/update-2026-03-rc2 - https://download.eclipse.org/](https://download.eclipse.org/linuxtools/update-2026-03-rc2) - 21
+   - ![](report-3873a92b2c13784f.png) [linuxtools/update-2026-03-docker-rc2 - https://download.eclipse.org/](https://download.eclipse.org/linuxtools/update-2026-03-docker-rc2) - 21
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) MWE ⭐ 1
-- ![](report-e31c5e0cd95f2614.png) [Eclipse Modeling Workflow Engine](https://projects.eclipse.org/projects/modeling.mwe) ⭐ 1 [2.25.0](https://projects.eclipse.org/projects/modeling.mwe/releases/2.25.0) 2026-02-23
+- ![](report-e31c5e0cd95f2614.png) [Eclipse Modeling Workflow Engine](https://projects.eclipse.org/projects/modeling.mwe) ⭐ 1 [2.26.0](https://projects.eclipse.org/projects/modeling.mwe/releases/2.26.0) 2026-05-25
     - ![](report-a693330d43c5517d.png) [mwe - https://github.com/eclipse-mwe](https://github.com/eclipse-mwe/mwe) - 5
 
 ---
@@ -338,16 +338,16 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/ocl.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/ocl.aggrcon) - 31
-   - ![](report-3873a92b2c13784f.png) [modeling/mdt/ocl/builds/release/6.23.0 - https://download.eclipse.org/](https://download.eclipse.org/modeling/mdt/ocl/builds/release/6.23.0) - 31
+   - ![](report-3873a92b2c13784f.png) [modeling/mdt/ocl/builds/release/6.23.0 - https://download.eclipse.org/](https://download.eclipse.org/modeling/mdt/ocl/builds/release/6.23.0) - 35
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) Passage ⭐ 1
-- ![](report-e31c5e0cd95f2614.png) [Eclipse Passage](https://projects.eclipse.org/projects/technology.passage) ⭐ 1 [4.5.0](https://projects.eclipse.org/projects/technology.passage/releases/4.5.0) 2026-03-04 [&#128240;](https://github.com/eclipse-passage/passage/releases/latest)
+- ![](report-e31c5e0cd95f2614.png) [Eclipse Passage](https://projects.eclipse.org/projects/technology.passage) ⭐ 1 [4.6.0](https://projects.eclipse.org/projects/technology.passage/releases/4.6.0) 2026-06-08 [&#128240;](https://github.com/eclipse-passage/passage/releases/latest)
     - ![](report-a693330d43c5517d.png) [passage - https://github.com/eclipse-passage](https://github.com/eclipse-passage/passage) - 11
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/passage.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/passage.aggrcon) - 20
-   - ![](report-3873a92b2c13784f.png) [passage/updates/release/4.5.0 - https://download.eclipse.org/](https://download.eclipse.org/passage/updates/release/4.5.0) - 20
+   - ![](report-3873a92b2c13784f.png) [passage/updates/release/4.5.0 - https://download.eclipse.org/](https://download.eclipse.org/passage/updates/release/4.5.0) - 21
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) QVT Operational ⭐ 1
@@ -356,17 +356,17 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/qvto.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/qvto.aggrcon) - 31
-   - ![](report-3873a92b2c13784f.png) [mmt/qvto/builds/release/3.11.2 - https://download.eclipse.org/](https://download.eclipse.org/mmt/qvto/builds/release/3.11.2) - 31
+   - ![](report-3873a92b2c13784f.png) [mmt/qvto/builds/release/3.11.2 - https://download.eclipse.org/](https://download.eclipse.org/mmt/qvto/builds/release/3.11.2) - 36
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) Trace Compass ⭐ 1
-- ![](report-e31c5e0cd95f2614.png) [Eclipse Trace Compass](https://projects.eclipse.org/projects/tools.tracecompass) ⭐ 1 [11.2.0](https://projects.eclipse.org/projects/tools.tracecompass/releases/11.2.0) 2025-12-10 [&#128240;](https://github.com/eclipse-tracecompass/org.eclipse.tracecompass/wiki/NewIn11.2)
+- ![](report-e31c5e0cd95f2614.png) [Eclipse Trace Compass](https://projects.eclipse.org/projects/tools.tracecompass) ⭐ 1 [11.3](https://projects.eclipse.org/projects/tools.tracecompass/releases/11.3) 2026-03-18 [&#128240;](https://github.com/eclipse-tracecompass/org.eclipse.tracecompass/wiki/NewIn11.2)
     - ![](report-a693330d43c5517d.png) [org.eclipse.tracecompass - https://github.com/eclipse-tracecompass](https://github.com/eclipse-tracecompass/org.eclipse.tracecompass) - 12
     - ![](report-a693330d43c5517d.png) [trace-event-logger - https://github.com/eclipse-tracecompass](https://github.com/eclipse-tracecompass/trace-event-logger) - 292
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/tracecompass.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/tracecompass.aggrcon) - 99
-   - ![](report-3873a92b2c13784f.png) [tracecompass/releases/11.2.0/repository - https://download.eclipse.org/](https://download.eclipse.org/tracecompass/releases/11.2.0/repository) - 101
+   - ![](report-3873a92b2c13784f.png) [tracecompass/releases/11.2.0/repository - https://download.eclipse.org/](https://download.eclipse.org/tracecompass/releases/11.2.0/repository) - 102
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) UML2 ⭐ 1
@@ -375,7 +375,7 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/uml2.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/uml2.aggrcon) - 31
-   - ![](report-3873a92b2c13784f.png) [modeling/mdt/uml2/builds/release/5.6.0 - https://download.eclipse.org/](https://download.eclipse.org/modeling/mdt/uml2/builds/release/5.6.0) - 31
+   - ![](report-3873a92b2c13784f.png) [modeling/mdt/uml2/builds/release/5.6.0 - https://download.eclipse.org/](https://download.eclipse.org/modeling/mdt/uml2/builds/release/5.6.0) - 36
 
 ---
 ## ![](report-419824ab8b1d6a04.png) 3rd Party
@@ -391,15 +391,15 @@ This report was generated 2026-03-24.
 ---
 ## ![](report-9fbfe55416c37ba3.png) ATL
 - ![](report-e31c5e0cd95f2614.png) [Eclipse ATL](https://projects.eclipse.org/projects/modeling.atl) [4.12.0](https://projects.eclipse.org/projects/modeling.atl/releases/4.12.0) 2025-05-19
-    - ![](report-a693330d43c5517d.png) [atl - https://github.com/eclipse-atl](https://github.com/eclipse-atl/atl) - 4
+    - ![](report-a693330d43c5517d.png) [atl - https://github.com/eclipse-atl](https://github.com/eclipse-atl/atl) - 5
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/m2m-atl.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/m2m-atl.aggrcon) - 309
-   - ![](report-3873a92b2c13784f.png) [mmt/atl/builds/release/4.12.0 - https://download.eclipse.org/](https://download.eclipse.org/mmt/atl/builds/release/4.12.0) - 309
+   - ![](report-3873a92b2c13784f.png) [mmt/atl/builds/release/4.12.0 - https://download.eclipse.org/](https://download.eclipse.org/mmt/atl/builds/release/4.12.0) - 318
 
 ---
 ## ![](report-419824ab8b1d6a04.png) BIRT
-- ![](report-e31c5e0cd95f2614.png) [Eclipse BIRT (Business Intelligence and Reporting Tools)](https://projects.eclipse.org/projects/technology.birt) [4.23.0](https://projects.eclipse.org/projects/technology.birt/releases/4.23.0) 2026-03-11 [&#128240;](https://github.com/eclipse-birt/birt/releases/latest)
+- ![](report-e31c5e0cd95f2614.png) [Eclipse BIRT (Business Intelligence and Reporting Tools)](https://projects.eclipse.org/projects/technology.birt) [4.24.0](https://projects.eclipse.org/projects/technology.birt/releases/4.24.0) 2026-06-10 [&#128240;](https://github.com/eclipse-birt/birt/releases/latest)
     - ![](report-a693330d43c5517d.png) [birt - https://github.com/eclipse-birt](https://github.com/eclipse-birt/birt) - 13
 
 ---
@@ -409,7 +409,7 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/dtp.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/dtp.aggrcon) - 385
-   - ![](report-3873a92b2c13784f.png) [datatools/updates/release/1.16.3 - https://download.eclipse.org/](https://download.eclipse.org/datatools/updates/release/1.16.3) - 385
+   - ![](report-3873a92b2c13784f.png) [datatools/updates/release/1.16.3 - https://download.eclipse.org/](https://download.eclipse.org/datatools/updates/release/1.16.3) - 463
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) DLTK
@@ -423,12 +423,12 @@ This report was generated 2026-03-24.
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) EclEmma
-- ![](report-e31c5e0cd95f2614.png) [Eclipse EclEmma](https://projects.eclipse.org/projects/technology.eclemma) [3.1.11](https://projects.eclipse.org/projects/technology.eclemma/releases/3.1.11) 2025-11-26 [&#128240;](https://github.com/eclipse-eclemma/eclemma/releases/latest)
+- ![](report-e31c5e0cd95f2614.png) [Eclipse EclEmma](https://projects.eclipse.org/projects/technology.eclemma) [3.1.11](https://projects.eclipse.org/projects/technology.eclemma/releases/3.1.11) 2025-11-26
     - ![](report-a693330d43c5517d.png) [eclemma - https://github.com/eclipse-eclemma](https://github.com/eclipse-eclemma/eclemma) - 6
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/eclemma.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/eclemma.aggrcon) - 117
-   - ![](report-3873a92b2c13784f.png) [eclemma/releases/3.1.11 - https://download.eclipse.org/](https://download.eclipse.org/eclemma/releases/3.1.11) - 117
+   - ![](report-3873a92b2c13784f.png) [eclemma/releases/3.1.11 - https://download.eclipse.org/](https://download.eclipse.org/eclemma/releases/3.1.11) - 118
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) EEF
@@ -471,7 +471,7 @@ This report was generated 2026-03-24.
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) PDT
-- ![](report-e31c5e0cd95f2614.png) [Eclipse PHP Development Tools](https://projects.eclipse.org/projects/tools.pdt) [8.4](https://projects.eclipse.org/projects/tools.pdt/releases/8.4) 2025-12-10 [&#128240;](https://github.com/eclipse-pdt/pdt/releases/latest)
+- ![](report-e31c5e0cd95f2614.png) [Eclipse PHP Development Tools](https://projects.eclipse.org/projects/tools.pdt) [8.4](https://projects.eclipse.org/projects/tools.pdt/releases/8.4) 2025-12-10
     - ![](report-a693330d43c5517d.png) [pdt - https://github.com/eclipse-pdt](https://github.com/eclipse-pdt/pdt) - 0
 
 ---
@@ -485,7 +485,7 @@ This report was generated 2026-03-24.
 
 ---
  - ![](report-4f9b9f34cbec2813.png) [eclipse-simrel/simrel.build/blob/main/qvtd.aggrcon - https://github.com/](https://github.com/eclipse-simrel/simrel.build/blob/main/qvtd.aggrcon) - 31
-   - ![](report-3873a92b2c13784f.png) [mmt/qvtd/builds/release/0.34.0 - https://download.eclipse.org/](https://download.eclipse.org/mmt/qvtd/builds/release/0.34.0) - 31
+   - ![](report-3873a92b2c13784f.png) [mmt/qvtd/builds/release/0.34.0 - https://download.eclipse.org/](https://download.eclipse.org/mmt/qvtd/builds/release/0.34.0) - 35
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) RAP Tools
@@ -510,7 +510,7 @@ This report was generated 2026-03-24.
 
 ---
 ## ![](report-9fbfe55416c37ba3.png) Sirius
-- ![](report-e31c5e0cd95f2614.png) [Eclipse Sirius](https://projects.eclipse.org/projects/modeling.sirius) [sirius-web-2026.1.0](https://projects.eclipse.org/projects/modeling.sirius/releases/sirius-web-2026.1.0) 2026-01-28 [&#128240;](https://github.com/eclipse-sirius/sirius-desktop/releases/latest)
+- ![](report-e31c5e0cd95f2614.png) [Eclipse Sirius](https://projects.eclipse.org/projects/modeling.sirius) [sirius-web-2023.5.0](https://projects.eclipse.org/projects/modeling.sirius/releases/sirius-web-2023.5.0) 2026-05-20 [&#128240;](https://github.com/eclipse-sirius/sirius-desktop/releases/latest)
     - ![](report-a693330d43c5517d.png) [sirius-desktop - https://github.com/eclipse-sirius](https://github.com/eclipse-sirius/sirius-desktop) - 13
     - ![](report-a693330d43c5517d.png) [sirius-emf-json - https://github.com/eclipse-sirius](https://github.com/eclipse-sirius/sirius-emf-json) - 270
 
