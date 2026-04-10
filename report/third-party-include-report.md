@@ -2,16 +2,8 @@
 ## [ATL](report.md#-atl)
 - org.eclipse.m2m.atl.engine.feature.group - `4.12.0.v202505101449`
   - org.antlr.runtime - `3.2.0.v20230929-1400`
-## [ECF](report.md#-ecf--3)
-- org.eclipse.ecf.remoteservice.servlet.feature.feature.group - `1.1.0.v20241230-2245`
-  - jakarta.servlet-api - `6.1.0`
 ## [Web Tools Platform](report.md#-web-tools-platform--2)
-- org.eclipse.jpt.jpa.feature.feature.group - `3.8.100.v202511170155`
-  - jakarta.persistence-api - `2.2.3`
-  - org.apache.commons.collections - `3.2.2.v201511171945`
-  - org.apache.velocity.engine-core - `2.4.1`
-  - org.jdom - `1.1.3.v20230812-1600`
-- org.eclipse.jst.web_core.feature.feature.group - `3.39.0.v202508180347`
+- org.eclipse.jst.web_core.feature.feature.group - `3.42.0.v202604080341`
   - jakarta.el - `4.0.0.v20210105-0527`
   - jakarta.servlet - `5.0.0.v20210105-0527`
   - jakarta.servlet.jsp - `3.0.0.v20210105-0527`
@@ -31,7 +23,7 @@
   - com.google.javascript - `0.0.20160315.v20161124-1903`
   - com.google.protobuf - `2.4.0.v201105131100`
   - org.mozilla.javascript - `1.7.10.v20190430-1943`
-- org.eclipse.wst.xml_core.feature.feature.group - `3.41.0.v202601060332`
+- org.eclipse.wst.xml_core.feature.feature.group - `3.42.0.v202604080342`
   - org.apache.xerces - `2.12.2.v20230928-1306`
   - org.apache.xml.resolver - `1.2.0.v20230928-1222`
   - org.apache.xml.serializer - `2.7.1.v201005080400`
