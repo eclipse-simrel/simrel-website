@@ -677,8 +677,8 @@ function generateMetrics(logicalBaseURL) {
 		currentVersion + '-M1',
 		getReleaseYear(-95) + '-R',
 		getReleaseYear(-190) + '-R',
-		getReleaseYear(-285) + '-R',
-		getReleaseYear(-380) + '-R',
+		getReleaseYear(-280) + '-R',
+		getReleaseYear(-370) + '-R',
 	];
 	generateMarkdown(logicalBaseURL, '# Download Metrics\n' + versions.map(generateEPPTable).join('\n\n'));
 	const toc = document.getElementById('toc');
