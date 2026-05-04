@@ -80,6 +80,7 @@ let projectAside = `
 <a href="${scriptBase}?file=wiki/Simultaneous_Release.md">Schedule</a>
 <a id="current-release-cycle" href="">${level1}${currentReleaseCycle}</a>
 <a id="current-release-cycle-participants" href="">${level2}Participants</a>
+<a href="${scriptBase}?file=metrics">Metrics</a>
 <a href="${scriptBase}?file=wiki/SimRel/Overview.md">Overview</a>
 <a href="${scriptBase}?file=wiki/SimRel/Simultaneous_Release_Requirements.md">Requirements</a>
 <a href="${scriptBase}?file=report/report.md">Contributor Report</a>
@@ -633,6 +634,142 @@ ${"```"}
 	}
 }
 
+const packageNames = [
+	'committers',
+	'cpp',
+	'dsl',
+	'embedcpp',
+	'java',
+	'jee',
+	'modeling',
+	'php',
+	'rcp',
+	'scout',
+];
+
+const suffixes = [
+	'win32-x86_64.zip',
+	'win32-aarch64.zip',
+	'linux-gtk-x86_64.tar.gz',
+	'linux-gtk-aarch64.tar.gz',
+	'linux-gtk-riscv64.tar.gz',
+	'macosx-cocoa-aarch64.dmg',
+	'macosx-cocoa-x86_64.dmg',
+];
+
+const installers = [
+	'eclipse-inst-jre-win64.exe',
+	'eclipse-inst-jre-win-aarch64.exe',
+	'eclipse-inst-jre-linux64.tar.gz',
+	'eclipse-inst-jre-linux-aarch64.tar.gz',
+	'eclipse-inst-jre-linux-riscv64.tar.gz',
+	'eclipse-inst-jre-mac-aarch64.dmg',
+	'eclipse-inst-jre-mac64.dmg',
+];
+
+function generateMetrics(logicalBaseURL) {
+	const currentVersion = getReleaseYear(-5);
+	const versions = [
+		currentVersion + '-R',
+		currentVersion + '-RC1',
+		currentVersion + '-M3',
+		currentVersion + '-M2',
+		currentVersion + '-M1',
+		getReleaseYear(-95) + '-R',
+		getReleaseYear(-190) + '-R',
+		getReleaseYear(-285) + '-R',
+		getReleaseYear(-380) + '-R',
+	];
+	generateMarkdown(logicalBaseURL, '# Download Metrics\n' + versions.map(generateEPPTable).join('\n\n'));
+	const toc = document.getElementById('toc');
+	const titles = toc.querySelectorAll('.tl1');
+	for (const title of titles) {
+		title.style.display = 'none';
+	}
+}
+
+function generateEPPTable(version) {
+	return `
+<div id="table-${version}" style="display: none;">
+
+# [${version}](https://www.eclipse.org/downloads/packages/release/${version.replaceAll(/-([MR][0-9]*)/g, '/$1').toLowerCase()})
+
+| package | ${suffixes.map(suffix => suffix.replaceAll(/\..*$/g, '').replaceAll(/-gtk|-cocoa/g, '').replaceAll(/-/g, ' ')).join(' | ')} | &Sigma; |
+|---|${suffixes.map(_ => '--:').join('|')}|--:|
+${packageNames.map(name => `| ${name} | ${suffixes.map(suffix => generateEPPTableCell(version, name, suffix)).join(' | ')} | <span id="${version}-${name}"></span> |`).join('\n')}
+| &Sigma; | ${suffixes.map(suffix => `<span id="${version}-${suffix}"></span>`).join(' | ')} | <span id="${version}"></span> |
+| installer | ${installers.map(installer => generateInstallerTableCell(version, installer)).join(' | ')} | <span id="installer-${version}"></span> |
+
+</div>
+`;
+}
+
+function generateInstallerTableCell(version, name) {
+	const versionMatch = /([0-9]+-[0-9]+)-(.*)/.exec(version);
+	const downloadURL = `https://api.eclipse.org/download/file/?file_name=/oomph/epp/${versionMatch[1]}/${versionMatch[2]}/${name}`;
+	const id = `${version}-${name}`;
+	handleDocumentURL(new URL(downloadURL), content => {
+		const json = JSON.parse(content);
+		const download_count = json.download_count;
+		updateCell(id, download_count, downloadURL).parentElement.style.background = 'honeydew'
+
+		const totalCell = sum(`installer-${version}`, download_count).parentElement
+		totalCell.style.background = 'honeydew';
+		totalCell.style.fontWeight = 900;
+	});
+	return `<span id='${id}'></span>`;
+}
+
+function generateEPPTableCell(version, name, suffix) {
+	const versionMatch = /([0-9]+-[0-9]+)-(.*)/.exec(version);
+	const downloadURL = `https://api.eclipse.org/download/file/?file_name=/technology/epp/downloads/release/${versionMatch[1]}/${versionMatch[2]}/eclipse-${name}-${version}-${suffix}`;
+	const id = `${version}-${name}-${suffix}`;
+	handleDocumentURL(new URL(downloadURL), content => {
+		const json = JSON.parse(content);
+		const download_count = json.download_count;
+		updateCell(id, download_count, downloadURL);
+
+		if (json.timestamp_disk != 0 || download_count != 0) {
+			showTable(version);
+		}
+
+		sum(`${version}-${suffix}`, download_count);
+		sum(`${version}-${name}`, download_count);
+		const totalCell = sum(`${version}`, download_count).parentElement;
+		totalCell.style.fontWeight = 900;
+	});
+	return `<span id='${id}'></span>`;
+}
+
+function showTable(version) {
+	const table = document.getElementById(`table-${version}`);
+	if (table.style.display != 'block') {
+		table.style.display = 'block';
+		const toc = document.getElementById('toc');
+		const tocTitle = toc.querySelector(`a[href="#${version.toLowerCase()}"]`);
+		tocTitle.parentElement.style.display = 'block';
+	}
+}
+
+function updateCell(id, download_count, downloadURL) {
+	const cell = document.getElementById(id);
+	cell.parentElement.style.textAlign = 'right';
+	cell.after(...toElements(`<a href="${downloadURL}">${download_count.toLocaleString('en')}</a>`));
+	return cell;
+}
+
+function sum(id, download_count) {
+	const totalCell = document.getElementById(id);
+	totalCell.parentElement.style.textAlign = 'right';
+	if (!totalCell.data) {
+		totalCell.data = 0;
+	}
+	totalCell.parentElement.style.background = 'lavender';
+	totalCell.data += download_count;
+	totalCell.innerHTML = `<span>${totalCell.data.toLocaleString('en')}</span>`;
+	return totalCell;
+}
+
 function generateMarkdown(logicalBaseURL, response) {
 	if (response instanceof Array) {
 		generateFileList(response);
@@ -665,7 +802,6 @@ ${"```"}
 ${headings.map(({ id, raw, level }) => `<li class="tl${level}"><a href="#${id}">${raw}</a></li>`).join(' ')}
 </ul>
 `;
-		console.log("Foo");
 		document.getElementById('toc-target').replaceChildren(...toElements(headingText));
 
 		const logo = getTargetElement().querySelector('img[src$="SimRel-Color.svg"]');
@@ -760,6 +896,11 @@ ${headings.map(({ id, raw, level }) => `<li class="tl${level}"><a href="#${id}">
 }
 
 function defaultHandler(url) {
+	if (logicalBaseURL.toString().endsWith("metrics")) {
+		generateMetrics(logicalBaseURL);
+		return;
+	}
+
 	fetch(url).then(response => {
 		return response.text();
 	}).then(text => {
@@ -819,11 +960,18 @@ function getCurrentReleaseCycle() {
 	});
 
 	// Try to get it roughly correct; it will be corrected when the document is loaded.
-	const now = new Date();
+	return getReleaseYear(0);
+}
+
+function getReleaseYear(offset) {
+	// const now = new Date();
+	const now = new Date(2026, 2, 25);
+	now.setDate(now.getDate() + offset);
+
 	const year = now.getFullYear();
 	const month = now.getMonth();
-	const day = now.getDay();
-	const quarter = (((month - 1) * 30 + day + 19) / 91) + 1;
+	const day = now.getDate();
+	const quarter = ((month * 30 + day + 19) / 91) + 1;
 	const suffix = quarter < 2 ? "03" : quarter < 3 ? "06" : quarter < 4 ? "09" : "12";
 	const currentRelease = quarter > 4.99 ? `${year + 1}-03` : `${year}-${suffix}`
 	return `${currentRelease}`;
