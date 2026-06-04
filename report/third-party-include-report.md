@@ -28,7 +28,7 @@
   - org.apache.xml.resolver - `1.2.0.v20230928-1222`
   - org.apache.xml.serializer - `2.7.1.v201005080400`
 ## [Xtext, Xtend](report.md#-xtext-xtend--3)
-- org.eclipse.xtext.redist.feature.group - `2.43.0.v20260426-1446`
+- org.eclipse.xtext.redist.feature.group - `2.43.0.v20260525-1205`
   - org.antlr.runtime - `3.2.0.v20230929-1400`
-- org.eclipse.xtext.runtime.feature.group - `2.43.0.v20260426-1446`
+- org.eclipse.xtext.runtime.feature.group - `2.43.0.v20260525-1205`
   - org.antlr.runtime - `3.2.0.v20230929-1400`
