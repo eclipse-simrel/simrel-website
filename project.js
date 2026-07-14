@@ -964,8 +964,8 @@ function getCurrentReleaseCycle() {
 }
 
 function getReleaseYear(offset) {
-	// const now = new Date();
-	const now = new Date(2026, 2, 25);
+	const now = new Date();
+	// const now = new Date(2026, 2, 25);
 	now.setDate(now.getDate() + offset);
 
 	const year = now.getFullYear();
