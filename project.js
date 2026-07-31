@@ -886,8 +886,10 @@ ${headings.map(({ id, raw, level }) => `<li class="tl${level}"><a href="#${id}">
 		}
 
 		// Ensure that we nagivate to the target.
-		if (document.location.hash.includes('#')) {
-			document.location.hash = document.location.hash;
+		const hash = document.location.hash;
+		if (hash.includes('#')) {
+			document.location.hash = '';
+			document.location.hash = hash;
 		}
 
 		postProcessToc();
