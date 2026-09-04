@@ -3,32 +3,27 @@
 - org.eclipse.m2m.atl.engine.feature.group - `4.12.0.v202505101449`
   - org.antlr.runtime - `3.2.0.v20230929-1400`
 ## [Web Tools Platform](report.md#-web-tools-platform--2)
-- org.eclipse.jst.web_core.feature.feature.group - `3.43.0.v202607030206`
-  - jakarta.el - `4.0.0.v20210105-0527`
-  - jakarta.servlet - `5.0.0.v20210105-0527`
-  - jakarta.servlet.jsp - `3.0.0.v20210105-0527`
-- org.eclipse.jst.ws.cxf.feature.feature.group - `1.1.1500.v202511232201`
-  - jakarta.xml.bind-api - `2.3.3`
-  - javax.jws - `2.0.0.v201005080400`
-  - javax.wsdl - `1.6.2.v201012040545`
-  - javax.xml.ws - `2.1.0.v200902101523`
-  - org.jdom - `1.1.3.v20230812-1600`
-- org.eclipse.jst.ws.jaxws.feature.feature.group - `1.2.1300.v202511232201`
-  - jakarta.xml.bind-api - `2.3.3`
-  - javax.jws - `2.0.0.v201005080400`
-  - javax.wsdl - `1.6.2.v201012040545`
-  - javax.xml.ws - `2.1.0.v200902101523`
+- org.eclipse.jst.web_core.feature.feature.group - `3.43.0.v202608191507`
+  - jakarta.el-api - `6.0.1`
+  - jakarta.servlet-api - `6.1.0`
+  - jakarta.servlet.jsp-api - `4.0.0`
+- org.eclipse.jst.ws.cxf.feature.feature.group - `1.1.1600.v202608200041`
+  - jakarta.jws-api - `2.1.0`
+  - jakarta.xml.bind-api - `4.0.5`
+  - jakarta.xml.ws-api - `2.3.3`
+  - javax.wsdl - `1.6.3.v20230730-0710`
+- org.eclipse.jst.ws.jaxws.feature.feature.group - `1.2.1400.v202608311726`
+  - jakarta.jws-api - `2.1.0`
+  - jakarta.xml.bind-api - `4.0.5`
+  - jakarta.xml.ws-api - `2.3.3`
+  - javax.wsdl - `1.6.3.v20230730-0710`
   - org.jdom - `1.1.3.v20230812-1600`
 - org.eclipse.wst.jsdt.feature.feature.group - `2.4.500.v202307190318`
   - com.google.javascript - `0.0.20160315.v20161124-1903`
   - com.google.protobuf - `2.4.0.v201105131100`
   - org.mozilla.javascript - `1.7.10.v20190430-1943`
-- org.eclipse.wst.xml_core.feature.feature.group - `3.43.0.v202606202057`
-  - org.apache.xerces - `2.12.2.v20230928-1306`
-  - org.apache.xml.resolver - `1.2.0.v20230928-1222`
-  - org.apache.xml.serializer - `2.7.1.v201005080400`
 ## [Xtext, Xtend](report.md#-xtext-xtend--3)
-- org.eclipse.xtext.redist.feature.group - `2.44.0.v20260707-0538`
+- org.eclipse.xtext.redist.feature.group - `2.44.0.v20260824-1228`
   - org.antlr.runtime - `3.2.0.v20230929-1400`
-- org.eclipse.xtext.runtime.feature.group - `2.44.0.v20260707-0538`
+- org.eclipse.xtext.runtime.feature.group - `2.44.0.v20260824-1228`
   - org.antlr.runtime - `3.2.0.v20230929-1400`
