@@ -2,11 +2,6 @@
 ## [ATL](report.md#-atl)
 - org.eclipse.m2m.atl.engine.feature.group - `4.12.0.v202505101449`
   - org.antlr.runtime - `3.2.0.v20230929-1400`
-## [Eclipse](report.md#-eclipse--8)
-- org.eclipse.platform.ide - `4.42.0.I20261012-2300`
-  - slf4j.simple - `2.0.20`
-- org.eclipse.sdk.ide - `4.42.0.I20261012-2300`
-  - slf4j.simple - `2.0.20`
 ## [Web Tools Platform](report.md#-web-tools-platform--2)
 - org.eclipse.jst.web_core.feature.feature.group - `3.43.0.v202608191507`
   - jakarta.el-api - `6.0.1`
